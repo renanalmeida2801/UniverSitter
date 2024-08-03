@@ -9,7 +9,7 @@
 .form{
    
     width: 1280px;
-    height: 500px;
+    height: 700px;
     margin-top: none;
     margin: 2em ;
     background-color: #fffff7;
@@ -19,7 +19,38 @@
     display: flexbox;
     width: 40%;
     padding: 1em;
-    margin: 0.5em 1em;
+    margin: 0.5em;
+    margin-left: 5em;
+    border: 2px solid #4B8D52;
+    border-radius: 20px;
+    background-color: #fffff7;
+    font-size: 1.2em; 
+    box-sizing: border-box;
+    color:#4B8D52;
+    
+}
+
+.form .anothertext{
+    display: flexbox;
+    width: 88.5%;
+    padding: 1em;
+    margin: 0.5em;
+    margin-left: 5em;
+    border: 2px solid #4B8D52;
+    border-radius: 20px;
+    background-color: #fffff7;
+    font-size: 1.2em; 
+    box-sizing: border-box;
+    color:#4B8D52;
+    
+}
+
+.form .passwordtext{
+    display: flexbox;
+    width: 88.5%;
+    padding: 1em;
+    margin: 0.5em;
+    margin-left: 5em;
     border: 2px solid #4B8D52;
     border-radius: 20px;
     background-color: #fffff7;
@@ -44,7 +75,7 @@
     cursor: pointer; /* Muda o cursor ao passar sobre o botão */
     text-align: center; /* Centraliza o texto dentro do botão */
     transition: background-color 0.3s ease; /* Adiciona transição suave para a cor de fundo */
-    margin-left: 12em;
+    margin-left: 11em;
 }
 
 .form button:hover {
@@ -52,6 +83,7 @@
 }
 
 .terms_container {
+    margin-top: 1.1em;
     display: flex;
     flex-direction: row;
     align-self: start;
@@ -61,7 +93,7 @@
 
 .checkbox {
     margin-top: 1.1em;
-    margin-left: 3em;
+    margin-left: 8em;
     margin-right: 0.5em;/* Espaçamento à direita do checkbox */
     transform: scale(2.5); /* Aumenta o tamanho do checkbox */
     cursor: pointer; /* Muda o cursor ao passar sobre o checkbox */
@@ -81,4 +113,18 @@
     font-family: 'KoHo', sans-serif;
     text-align: center;
     padding: 0.5em;
+}
+
+.link {
+    margin-top: 1.3em;
+    color: #5a5b5c; /* Cor do texto */
+    font-size: 1.5em; /* Tamanho da fonte */
+    text-decoration: none; /* Remove o sublinhado padrão */
+    font-weight: bold; /* Deixa o texto em negrito */
+    transition: color 0.3s ease; /* Adiciona uma transição suave para a cor do texto */
+}
+
+.link:hover {
+    color: #4fac09; /* Cor do texto ao passar o mouse */
+    text-decoration: underline; /* Adiciona o sublinhado ao passar o mouse */
 }

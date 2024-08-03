@@ -1,7 +1,6 @@
 .navbar{
     display: flex;
-    justify-content: space-between;
-    
+    justify-content: center;
     background-color: #ffffff;
     padding: 1em;
     width:100% ;
@@ -14,8 +13,9 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    padding-top: 20px;
+    padding-top: 8px;
     width: 100%;
+    
 }
 
 
@@ -29,8 +29,24 @@
 .item a{
     color: #000;
     text-decoration: none;
+    font-family: 'KoHo', sans-serif;
+    font-size: 2em;
+    padding-top: 8px;
 }
 
+.menu a{
+    margin-top: 10px;
+    margin-right: 1em; /* Ajuste conforme necessário */
+    /* margin-left: auto; */
+    color: #000;
+    text-decoration: none;
+    font-family: 'KoHo', sans-serif;
+    font-size: 2em;
+}
+
+.menu a:hover{
+    color: #4B8D52;
+}
 
 .item a:hover{
     color: #4B8D52;
