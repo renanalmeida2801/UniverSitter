@@ -1,5 +1,8 @@
-require('dotenv').config();
-const { Client } = require('pg');
+// require('dotenv').config();
+// const { Client } = require('pg');
+
+import 'dotenv/config'
+import { Client } from 'pg'
 
 const cliente = new Client({
     user: process.env.DB_USER,
@@ -9,7 +12,12 @@ const cliente = new Client({
     port: process.env.DB_PORT
 })
 
-async function testar() {
+export async function insert(data) {
+
+    data.forEach(element => {
+        console.log(element)
+    });
+
     try {
         await cliente.connect();
         console.log('conectado com sucesso')
@@ -19,4 +27,5 @@ async function testar() {
     }
 }
 
-testar();
+
+// module.exports = { insert };
