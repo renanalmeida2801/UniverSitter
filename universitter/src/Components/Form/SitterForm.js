@@ -1,7 +1,3 @@
-import { Image } from '@chakra-ui/react'
-import select from 'react'
-
-
 import styles from './SitterForm.module.css'
 
 
@@ -12,12 +8,7 @@ function SitterForm() {
                 <h3 className={styles.h3}>Torne-se um cuidador</h3>
                 {/* <label>preencha os dados abaixo</label><br /> */}
 
-                <Image className={styles.imagem}
-                    borderRadius='full'
-                    boxSize='150px'
-                    src='https://bit.ly/dan-abramov'
-                    alt='Dan Abramov'
-                />
+                
 
                 <div className={styles.categoria}>
                     <select >
