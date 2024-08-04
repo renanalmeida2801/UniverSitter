@@ -15,7 +15,7 @@ function Navbar(){
                         <Link className={styles.menu} to='/'>Encontrar um cuidador</Link>
                     </li>
                     <li className={styles.menu}>
-                        <Link to='/'>Quero ser um cuidador</Link>
+                        <Link to='/sitter-register'>Quero ser um cuidador</Link>
                     </li >
                     <li className={styles.menu}>
                         <Link to='/user-register'>Chat</Link>
