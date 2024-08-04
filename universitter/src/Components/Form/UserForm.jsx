@@ -50,16 +50,16 @@ function UserForm({ btnText }) {
             <form className={styles.form} >
                 <h3>Cadastre-se</h3>
 
-                {/* <InputInfos1 type="text" name="nome" placeholder="Nome" value={nome} onChange={handleChangeName} />
+                <InputInfos1 type="text" name="nome" placeholder="Nome" value={nome} onChange={handleChangeName} />
                 <InputInfos1 type="text" name="sobrenome" placeholder="Sobrenome" value={sobrenome} onChange={handleChangeSobrenome} />
                 <InputInfos2 type="text" name="telefone" placeholder="Telefone" value={telefone} onChange={handleChangeTelefone} />
                 <InputInfos2 type="email" name="email" placeholder="Email" value={email} onChange={handleChangeEmail} />
-                <InputInfos2 type="password" name="senha" placeholder="Senha" value={senha} onChange={handleChangeSenha} /> */}
-                <input type="text" name="nome" placeholder="Nome" className={styles.fieldtext}></input>
+                <InputInfos2 type="password" name="senha" placeholder="Senha" value={senha} onChange={handleChangeSenha} />
+                {/* <input type="text" name="nome" placeholder="Nome" className={styles.fieldtext}></input>
                 <input type="text" name="sobrenome" placeholder="Sobrenome" className={styles.fieldtext}></input><br />
                 <input type="text" name="telefone" placeholder="Telefone" className={styles.anothertext}></input><br />
                 <input type="email" name="email" placeholder="Email" className={styles.anothertext}></input><br />
-                <input type="password" name="senha" placeholder="Senha" className={styles.anothertext}></input><br />
+                <input type="password" name="senha" placeholder="Senha" className={styles.anothertext}></input><br /> */}
 
                 <div className={styles.terms_container}>
                     <input type="checkbox" name="termos" className={styles.checkbox}></input>

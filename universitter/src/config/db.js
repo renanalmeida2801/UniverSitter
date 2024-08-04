@@ -28,4 +28,4 @@ export async function insert(data) {
 }
 
 
-// module.exports = { insert };
+module.exports = { insert };

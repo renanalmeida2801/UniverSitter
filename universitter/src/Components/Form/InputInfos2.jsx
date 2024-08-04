@@ -10,15 +10,10 @@ export default function InputInfos2({ name, value, placeholder, onChange }) {
 
         <input
             className={styles.anothertext}
-            variant="filled"
             name={name}
             value={value}
             placeholder={placeholder}
             onChange={onChange}
-            sx={{
-                padding: '1em', // Define o padding desejado aqui
-                // Outros estilos personalizados
-            }}
         />
     );
 }

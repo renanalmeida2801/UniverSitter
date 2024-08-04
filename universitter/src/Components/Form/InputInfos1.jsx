@@ -15,10 +15,6 @@ export default function InputInfos1({ name, value, placeholder, onChange }) {
       value={value}
       placeholder={placeholder}
       onChange={onChange}
-      sx={{
-        padding: '1em', // Define o padding desejado aqui
-        // Outros estilos personalizados
-      }}
     />
   );
 }
