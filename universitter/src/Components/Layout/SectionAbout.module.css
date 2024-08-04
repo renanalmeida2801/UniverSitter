@@ -1,0 +1,35 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    background-color: #4B8D52;
+    /* padding-bottom: 10px; */
+}
+
+.text{
+    color:white;
+    font-family:'KoHo', sans-serif;
+    text-align: center;
+    font-size: 48px;
+}
+
+.info{
+    color: white;
+    font-family:'KoHo', sans-serif;
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 20px;
+
+}
+
+.button{
+    color: #4B8D52;
+    font-family:'KoHo', sans-serif;
+    text-decoration: none;
+    text-align: center;
+    font-size: 30px;
+    padding: 10px;
+    margin-left: 1em;
+    background-color: white;
+    border-radius: 20px;
+}
+
