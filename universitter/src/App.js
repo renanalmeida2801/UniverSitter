@@ -14,22 +14,22 @@ import Styles from './index.css'
 
 function App() {
   return (
-   
+
     <Router>
-      <Navbar/>
+      <Navbar />
       {/* <Container customClass='minHeight'> */}
-        <Routes>
-          <Route exact path='/' element={<Home/>}></Route>
-          <Route exact path='/help' element={<Help/>}></Route>
-          {/* <Route exact path='/company' element={<Company/>}></Route>
+      <Routes>
+        <Route exact path='/' element={<Home />}></Route>
+        <Route exact path='/help' element={<Help />}></Route>
+        {/* <Route exact path='/company' element={<Company/>}></Route>
           <Route exact path='/contact' element={<Contact/>}></Route>
           <Route exact path='/newproject' element={<NewProject/>}></Route> */}
-        </Routes>
+      </Routes>
       {/* </Container> */}
 
       {/* <Footer/> */}
     </Router>
-   
+
   );
 }
 
