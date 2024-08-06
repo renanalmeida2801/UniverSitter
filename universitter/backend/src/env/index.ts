@@ -9,7 +9,7 @@ export const postgresDBConfigSchema = z.object({
   DB_HOST: z.string(),
   DB_PORT: z.string(),
   DB_NAME: z.string(),
-  CONNECTIONSTRING: z.string().optional(), // Making CONNECTIONSTRING optional if individual params are used
+  CONNECTIONSTRING: z.string().optional(),
 })
 
 const postgresDBConfig = postgresDBConfigSchema.safeParse({
@@ -23,10 +23,9 @@ const postgresDBConfig = postgresDBConfigSchema.safeParse({
 
 if (!postgresDBConfig.success) {
   console.error(
-    'Invalid env variables in postgres!',
     postgresDBConfig.error.format(),
   )
-  process.exit(1) // Exit the process if validation fails
+  process.exit(1)
 }
 
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME, CONNECTIONSTRING } =
