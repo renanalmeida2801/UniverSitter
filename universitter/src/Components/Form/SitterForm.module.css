@@ -30,6 +30,7 @@
 .descricao{
     position: absolute;
     left: 34%;
+    top: 38%;
     display: flexbox;
     width: 39%;
     padding: 2.2em;
@@ -46,7 +47,7 @@
 
 .cpf{
     position: absolute;
-    top: 56%;
+    top: 58%;
     left: 38%;
     display: flexbox;
     width: 35%;
@@ -63,7 +64,7 @@
 
 .endereco{
     position: absolute;
-    top: 68%;
+    top: 69%;
     left:10.5%;
     width: 50%;
     padding: 1em;
@@ -80,7 +81,7 @@
 .number{
     position: absolute;
     left: 63%;
-    top: 68%;
+    top: 69%;
     width: 10%;
     padding: 1em;
     margin: 0.5em;
@@ -114,7 +115,7 @@
 .complemento{
     position: absolute;
     left: 10.5%;
-    top: 90.5%;
+    top: 89.5%;
     display: flexbox;
     width: 30%;
     padding: 1em;
@@ -132,7 +133,7 @@
 .referencia{
     position: absolute;
     left: 43.5%;
-    top: 90.5%;
+    top: 89.5%;
     display: flexbox;
     width: 30%;
     padding: 1em;
@@ -150,7 +151,7 @@
 .button{
     position: absolute;
     left: 30%;
-    top: 105%;
+    top: 103%;
     padding: 0.4em 10%; /* Espaçamento interno */
     background-color: #4B8D52; /* Cor de fundo */
     color: white; /* Cor do texto */
@@ -184,54 +185,3 @@
     border-radius: 10px;
 }
 
-/* .customSelect {
-  position: relative;
-  font-family: Arial;
-}
-
-.customSelect select {
-  display: flex; 
-}
-
-.select-selected:after {
-  position: absolute;
-  content: "";
-  top: 14px;
-  right: 10px;
-  width: 0;
-  height: 0;
-  border: 6px solid transparent;
-  border-color: #fff transparent transparent transparent;
-}
-
-.select-selected.select-arrow-active:after {
-  border-color: transparent transparent #fff transparent;
-  top: 7px;
-}
-
-
-.select-items div,.select-selected {
-  color: #da0e0e;
-  padding: 8px 16px;
-  border: 1px solid transparent;
-  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-  cursor: pointer;
-}
-
-
-.itens {
-  position: absolute;
-  background-color: rgb(33, 193, 68);
-  top: 100%;
-  left: 0;
-  right: 0;
-  z-index: 99;
-}
-
-.select-hide {
-    display: none;
-  }
-  
-  .select-items div:hover, .same-as-selected {
-    background-color: rgba(0, 0, 0, 0.1);
-  } */

@@ -1,24 +1,20 @@
 import styles from './SitterForm.module.css'
+import { useState } from 'react'
+import CategoryDropdown from './CategoryDropdown';
+import SitterProfilePicture from './SitterProfilePicture';
 
 
 function SitterForm() {
+
+    const[selected, setSelected] = useState("Selecione a categoria");
+
     return (
         <div className={styles.container}>
             <form className={styles.form}>
                 <h3 className={styles.h3}>Torne-se um cuidador</h3>
                 {/* <label>preencha os dados abaixo</label><br /> */}
-
-                
-
-                <div className={styles.categoria}>
-                    <select >
-                        <option className={styles.itens} value="0">Selecione a categoria</option>
-                        <option value="1">Animais e Plantas</option>
-                        <option value="2">Somente Animais</option>
-                        <option value="3">Somente Plantas</option>
-                        
-                    </select>
-                </div>
+                <SitterProfilePicture/>
+                <CategoryDropdown selected={selected} setSelected={setSelected}/>
 
                 <div className={styles.form_group}>
                     <input type='text' className={styles.cpf} placeholder='CPF'></input>
