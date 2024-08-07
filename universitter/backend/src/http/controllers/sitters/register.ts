@@ -1,7 +1,8 @@
 import { z } from 'zod'
 import { FastifyRequest, FastifyReply } from 'fastify'
-import { CreateUserUseCase } from '@/services/create-users'
-import { KnexUsersRepository } from '@/repositories/knex/knex-users-repository'
+import { CreateSitterUseCase } from '@/services/create-sitters'
+import { KnexSittersRepository } from '@/repositories/knex/knex-sitters-repository'
+import { randomInt } from 'crypto'
 
 /**
  * Register a new User
@@ -15,30 +16,32 @@ import { KnexUsersRepository } from '@/repositories/knex/knex-users-repository'
  * @example {"id_grupo":1,"nome":"string","sobrenome":"string","email":"string","senha":"string","telefone":"string"}
  * @example POST localhost:3000/Users
  */
-export async function registerUser(request: FastifyRequest, reply: FastifyReply) {
+export async function registerSitter(request: FastifyRequest, reply: FastifyReply) {
   const registerBodySchema = z.object({
-    nome: z.string(),
-    sobrenome: z.string(),
-    email: z.string(),
-    senha: z.string(),
-    telefone: z.string(),
+    id_user: z.number().default(randomInt(100)),
+    descricao: z.string(),
+    disponibilidade: z.boolean().default(true),
+    rating: z.number().default(0),
+    endereco: z.string(),
+    cpf: z.string(),
   })
 
   const data = registerBodySchema.parse(request.body)
 
   try {
-    const usersRepository = new KnexUsersRepository()
-    const registerUseCase = new CreateUserUseCase(usersRepository)
-    const { user } = await registerUseCase.execute({
-      nome: data.nome,
-      sobrenome: data.sobrenome,
-      email: data.email,
-      senha: data.senha,
-      telefone: data.telefone,
+    const sittersRepository = new KnexSittersRepository()
+    const registerUseCase = new CreateSitterUseCase(sittersRepository)
+    const { sitter } = await registerUseCase.execute({
+      id_user: data.id_user,
+      descricao: data.descricao,
+      disponibilidade: data.disponibilidade,
+      rating: data.rating,
+      endereco: data.endereco,
+      cpf: data.cpf,
     })
     return reply.status(201).send({
-      message: `User ${data.nome} successfully registered!`,
-      data: user,
+      message: `Sitter ${data.cpf} successfully registered!`,
+      data: sitter,
     })
   } catch (err) {
     if (err instanceof Error) {

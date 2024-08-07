@@ -11,7 +11,7 @@ import { FetchUsersByGroupIdUseCase } from '@/services/fetch-users-group'
  * @example POST localhost:3000/Users/fetchByGroupId
  */
 
-export async function fetch(request: FastifyRequest, reply: FastifyReply) {
+export async function fetchUser(request: FastifyRequest, reply: FastifyReply) {
   const deleteBodySchema = z.object({
     id_grupo: z.number(),
   })

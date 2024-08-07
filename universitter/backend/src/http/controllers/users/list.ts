@@ -11,7 +11,7 @@ import { ListUsersUseCase } from '@/services/list-users'
  * @example GET localhost:3000/Users?query=string
  */
 
-export async function list(request: FastifyRequest, reply: FastifyReply) {
+export async function listUser(request: FastifyRequest, reply: FastifyReply) {
   const listBodySchema = z.object({
     query: z.string().default(''),
   })

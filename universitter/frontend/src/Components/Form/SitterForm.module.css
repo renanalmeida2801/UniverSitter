@@ -1,0 +1,187 @@
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: none;
+    height: 100vh;
+}
+
+.form{
+    justify-content: center;
+    width: 1100px;
+    height: 720px;
+    margin-top: none;
+    margin: 2em ;
+    background-color: #fffff7;
+}
+
+.form h3{
+    font-size: 58px;
+    font-family: 'KoHo', sans-serif;
+    text-align: center;
+    padding: 0.5em;
+}
+
+
+.form input::placeholder{
+    color: #4B8D52;
+}
+
+
+.descricao{
+    position: absolute;
+    left: 34%;
+    top: 38%;
+    display: flexbox;
+    width: 39%;
+    padding: 2.2em;
+    margin: 0.5em;
+    margin-left: 5em;
+    border: 2px solid #4B8D52;
+    border-radius: 20px;
+    background-color: #fffff7;
+    font-size: 1.2em; 
+    box-sizing: border-box;
+    color:#4B8D52;
+    
+}
+
+.cpf{
+    position: absolute;
+    top: 58%;
+    left: 38%;
+    display: flexbox;
+    width: 35%;
+    padding: 1em;
+    margin: 0.5em;
+    margin-left: 5em;
+    border: 2px solid #4B8D52;
+    border-radius: 20px;
+    background-color: #fffff7;
+    font-size: 1.2em; 
+    box-sizing: border-box;
+    color:#4B8D52;
+}
+
+.endereco{
+    position: absolute;
+    top: 69%;
+    left:10.5%;
+    width: 50%;
+    padding: 1em;
+    margin: 0.5em;
+    margin-left: 5em;
+    border: 2px solid #4B8D52;
+    border-radius: 20px;
+    background-color: #fffff7;
+    font-size: 1.2em; 
+    box-sizing: border-box;
+    color:#4B8D52;
+}
+
+.number{
+    position: absolute;
+    left: 63%;
+    top: 69%;
+    width: 10%;
+    padding: 1em;
+    margin: 0.5em;
+    margin-left: 5em;
+    border: 2px solid #4B8D52;
+    border-radius: 20px;
+    background-color: #fffff7;
+    font-size: 1.2em; 
+    box-sizing: border-box;
+    color:#4B8D52;
+}
+
+.bairro{
+    position: absolute;
+    left: 10.5%;
+    top: 80%;
+    display: flexbox;
+    width: 63%;
+    padding: 1em;
+    margin: 0.5em;
+    margin-left: 5em;
+    border: 2px solid #4B8D52;
+    border-radius: 20px;
+    background-color: #fffff7;
+    font-size: 1.2em; 
+    box-sizing: border-box;
+    color:#4B8D52;
+}
+
+
+.complemento{
+    position: absolute;
+    left: 10.5%;
+    top: 89.5%;
+    display: flexbox;
+    width: 30%;
+    padding: 1em;
+    margin: 0.5em;
+    margin-top: 1em;
+    margin-left: 5em;
+    border: 2px solid #4B8D52;
+    border-radius: 20px;
+    background-color: #fffff7;
+    font-size: 1.2em; 
+    box-sizing: border-box;
+    color:#4B8D52;
+}
+
+.referencia{
+    position: absolute;
+    left: 43.5%;
+    top: 89.5%;
+    display: flexbox;
+    width: 30%;
+    padding: 1em;
+    margin: 0.5em;
+    margin-top: 1em;
+    margin-left: 5em;
+    border: 2px solid #4B8D52;
+    border-radius: 20px;
+    background-color: #fffff7;
+    font-size: 1.2em; 
+    box-sizing: border-box;
+    color:#4B8D52;
+}
+
+.button{
+    position: absolute;
+    left: 30%;
+    top: 103%;
+    padding: 0.4em 10%; /* Espaçamento interno */
+    background-color: #4B8D52; /* Cor de fundo */
+    color: white; /* Cor do texto */
+    font-size: 1.8em; /* Tamanho do texto */
+    border: none; /* Remove borda padrão */
+    border-radius: 20px; /* Arredonda os cantos */
+    cursor: pointer; /* Muda o cursor ao passar sobre o botão */
+    text-align: center; /* Centraliza o texto dentro do botão */
+    transition: background-color 0.3s ease; /* Adiciona transição suave para a cor de fundo */
+    margin-left: 1em;
+}
+
+.button:hover {
+    background-color: #45a049; /* Cor de fundo ao passar o mouse */
+}
+
+.imagem{
+    position: absolute;
+    top: 37%;
+    left: 25%;
+}
+
+.categoria{
+    display: flex;
+    position: absolute;
+    font-size: 1.6em;
+    width: 30%;
+    padding: 0.5em;
+    top: 59%;
+    left: 20%;
+    border-radius: 10px;
+}
+

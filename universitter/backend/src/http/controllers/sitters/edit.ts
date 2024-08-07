@@ -1,10 +1,10 @@
 import { z } from 'zod'
 import { FastifyRequest, FastifyReply } from 'fastify'
-import { KnexUsersRepository } from '@/repositories/knex/knex-users-repository'
-import { EditUserUseCase } from '@/services/edit-users'
+import { KnexSittersRepository } from '@/repositories/knex/knex-sitters-repository'
+import { EditSitterUseCase } from '@/services/edit-sitters'
 
 /**
- *
+ *  MUDAR!!!!
  * @param {object} request.body - Body Object
  * @param {number} request.body.id - User ID
  * @param {number} request.body.id_grupo - Group ID
@@ -16,33 +16,32 @@ import { EditUserUseCase } from '@/services/edit-users'
  * @example {"id":1,"id_grupo":1,"nome":"string","sobrenome":"string","email":"string","senha":"string","telefone":"string"}
  * @example PUT localhost:3000/Users/edit:id
  */
-export async function editUser(request: FastifyRequest, reply: FastifyReply) {
+export async function editSitter(request: FastifyRequest, reply: FastifyReply) {
   const registerBodySchema = z.object({
     id: z.number(),
-    id_grupo: z.number().optional(),
-    nome: z.string().optional(),
-    sobrenome: z.string().optional(),
-    email: z.string().optional(),
-    senha: z.string().optional(),
-    telefone: z.string().optional(),
+    id_user: z.number().optional(),
+    descricao: z.string().optional(),
+    disponibilidade: z.boolean().optional(),
+    rating: z.number().optional(),
+    endereco: z.string().optional(),
+    cpf: z.string().optional(),
   })
   const data = registerBodySchema.parse(request.body)
 
   try {
-    const usersRepository = new KnexUsersRepository()
-    const editUseCase = new EditUserUseCase(usersRepository)
-    const { user } = await editUseCase.execute({
+    const sittersRepository = new KnexSittersRepository()
+    const editUseCase = new EditSitterUseCase(sittersRepository)
+    const { sitter } = await editUseCase.execute({
       id: data.id,
-      id_grupo: data.id_grupo,
-      nome: data.nome,
-      sobrenome: data.sobrenome,
-      email: data.email,
-      senha: data.senha,
-      telefone: data.telefone,
+      id_user: data.id_user,
+      descricao: data.descricao,
+      disponibilidade: data.disponibilidade,
+      rating: data.rating,
+      endereco: data.endereco,
+      cpf: data.cpf,
     })
     return reply.status(201).send({
-      message: `User ${user.nome} successfully edited!`,
-      data: user,
+      message: `Sitter successfully edited!`,
     })
   } catch (err) {
     if (err instanceof Error) {

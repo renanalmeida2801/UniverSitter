@@ -12,6 +12,7 @@ import Navbar from './Components/Layout/Navbar';
 // import Footer from './Components/Layout/Footer'
 import Styles from './index.css'
 import UserRegister from './Components/Pages/UserRegister';
+import SitterRegister from './Components/Pages/SitterRegister';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route exact path='/' element={<Home/>}></Route>
           <Route exact path='/help' element={<Help/>}></Route>
           <Route exact path='/user-register' element={<UserRegister/>}></Route>
+          <Route exact path='/sitter-register' element={<SitterRegister/>}></Route>
           {/* <Route exact path='/company' element={<Company/>}></Route>
           <Route exact path='/contact' element={<Contact/>}></Route>
           <Route exact path='/newproject' element={<NewProject/>}></Route> */}
