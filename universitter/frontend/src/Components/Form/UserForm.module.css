@@ -7,9 +7,6 @@
 }
 
 .form{
-    display: flex;
-    flex-direction: column;
-
     width: 1280px;
     height: 700px;
     margin-top: none;
@@ -126,6 +123,8 @@
     text-decoration: none; /* Remove o sublinhado padrão */
     font-weight: bold; /* Deixa o texto em negrito */
     transition: color 0.3s ease; /* Adiciona uma transição suave para a cor do texto */
+    margin-bottom: 1em;
+    height: 10px;
 }
 
 .link:hover {
