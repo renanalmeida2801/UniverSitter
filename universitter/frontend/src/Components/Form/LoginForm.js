@@ -7,6 +7,7 @@ import plantImage from './../../img/jardinagem.png';
 import pawsImage from './../../img/patas.png';
 import googleImage from '../../img/google 1.png';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react'; // Import useState for error handling
 
 // Define schema with Zod
 const loginSchema = z.object({
@@ -14,29 +15,32 @@ const loginSchema = z.object({
   password: z.string().min(1, 'Necessário inserir a senha!'),
 });
 
-
 // Define the LoginForm component
 const LoginForm = (props) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [loginError, setLoginError] = useState(''); // State for managing login errors
+
   async function post(data) {
-    console.log(data)
+    console.log(data);
     try {
       const response = await api.post('/login', data);
-      const token = response.data.token
-      console.log(token)
-      sessionStorage.setItem('authToken', token)
+      const token = response.data.token;
+      console.log(token);
+      sessionStorage.setItem('authToken', token);
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       console.log('Resposta do servidor:', response.data);
-      if(token) navigate('/')
+      if (token) navigate('/');
     } catch (error) {
       console.error('Erro ao enviar dados:', error);
+      setLoginError('Falha ao tentar fazer login. Verifique suas credenciais e tente novamente.'); // Update error state
     }
   }
-  
+
   const onSubmit = async (data) => {
-    post(data)
-    console.log(data);
+    setLoginError(''); // Clear previous errors
+    await post(data);
   };
+
   // Initialize useForm with zodResolver
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: zodResolver(loginSchema),
@@ -67,10 +71,11 @@ const LoginForm = (props) => {
           />
           {errors.password && <span className={Styles.errorText}>{errors.password.message}</span>}
         </div>
+        {loginError && <div className={Styles.errorMessage}>{loginError}</div>} {/* Display error message */}
         <div className={Styles.inputButtonGroup}>
           <button className={Styles.default} type="submit">Login</button>
           <span>OU</span>
-          <button className={Styles.googleButton} type="submit">
+          <button className={Styles.googleButton} type="button"> {/* Changed type to button */}
             Entrar com Google
             <img src={googleImage} className={Styles.googleImg} alt='google image' />
           </button>
