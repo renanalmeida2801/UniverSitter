@@ -16,11 +16,14 @@ import { login } from './controllers/auth/login'
 // Typescript exemple to use Models.
 export async function appRoutes(app: FastifyInstance) {
   app.post('/login', login)
-  // app.addHook('preHandler', authMiddleware)
-  app.get('/test', () => {
-    console.log('test')
-  })
 
+  app.addHook('onRequest', async (request, reply) => {
+    const publicRoutes = ['/login', '/test']; // Rotas que não precisam de autenticação
+    if (!publicRoutes.includes(request.routerPath)) {
+      await authMiddleware(request, reply);
+    }
+  });
+  
   // Users
 
   app.post('/users', registerUser)
