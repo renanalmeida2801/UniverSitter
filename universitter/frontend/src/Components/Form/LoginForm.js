@@ -15,21 +15,21 @@ const loginSchema = z.object({
 
 async function post(data) {
   console.log(data)
-    try {
-        const response = await api.post('/login', data);
-        const token = response.data.data
-        console.log(token)
-        sessionStorage.setItem('authToken',token)
-        api.defaults.headers.common['Authorization'] = 'Bearer ${token}';
-        console.log('Resposta do servidor:', response.data);
-    } catch (error) {
-        console.error('Erro ao enviar dados:', error);
-    }
+  try {
+    const response = await api.post('/login', data);
+    const token = response.data.data
+    console.log(token)
+    sessionStorage.setItem('authToken', token)
+    api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    console.log('Resposta do servidor:', response.data);
+  } catch (error) {
+    console.error('Erro ao enviar dados:', error);
+  }
 }
 
 const onSubmit = async (data) => {
-    post(data)
-    console.log(data);
+  post(data)
+  console.log(data);
 };
 
 // Define the LoginForm component

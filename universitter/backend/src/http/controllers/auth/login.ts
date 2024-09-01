@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { FastifyRequest, FastifyReply } from 'fastify'
 import { KnexUsersRepository } from '@/repositories/knex/knex-users-repository'
-import { authLogin } from '@/services/auth-login'
+import { AuthLogin } from '@/services/auth-login'
 
 /**
  * MUDA ISSO
@@ -19,13 +19,15 @@ export async function login(request: FastifyRequest, reply: FastifyReply) {
   })
 
   const data = loginSchema.parse(request.body)
-  
+
   const userRepository = new KnexUsersRepository()
-  const loginUseCase = new authLogin(userRepository)
-  const { token } = await loginUseCase.login(data)
+  const loginUseCase = new AuthLogin(userRepository)
+  const { user, token } = await loginUseCase.login(data)
 
   return reply.status(200).send({
-    message: `successfully logged!`,
-    data: token,
+    message: `Successfully logged!`,
+    user,
+    token,
   })
 }
+
