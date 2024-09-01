@@ -7,7 +7,7 @@ import plantImage from './../../img/jardinagem.png';
 import pawsImage from './../../img/patas.png';
 import googleImage from '../../img/google 1.png';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react'; // Import useState for error handling
+import { useState } from 'react';
 
 // Define schema with Zod
 const loginSchema = z.object({
@@ -18,7 +18,7 @@ const loginSchema = z.object({
 // Define the LoginForm component
 const LoginForm = (props) => {
   const navigate = useNavigate();
-  const [loginError, setLoginError] = useState(''); // State for managing login errors
+  const [loginError, setLoginError] = useState(''); // Estado para erros gerais de login
 
   async function post(data) {
     console.log(data);
@@ -32,12 +32,12 @@ const LoginForm = (props) => {
       if (token) navigate('/');
     } catch (error) {
       console.error('Erro ao enviar dados:', error);
-      setLoginError('Falha ao tentar fazer login. Verifique suas credenciais e tente novamente.'); // Update error state
+      setLoginError('E-mail ou senha inválidos. Por favor, tente novamente.'); // Mensagem de erro geral
     }
   }
 
   const onSubmit = async (data) => {
-    setLoginError(''); // Clear previous errors
+    setLoginError(''); // Limpa erros anteriores antes de tentar novamente
     await post(data);
   };
 
@@ -58,7 +58,7 @@ const LoginForm = (props) => {
           <input
             placeholder='E-mail'
             type="text"
-            className={errors.email ? Styles.inputError : ''}
+            className={`${errors.email || loginError ? Styles.inputError : ''}`}
             {...register('email')}
           />
           {errors.email && <span className={Styles.errorText}>{errors.email.message}</span>}
@@ -66,16 +66,16 @@ const LoginForm = (props) => {
           <input
             placeholder='Senha'
             type="password"
-            className={errors.password ? Styles.inputError : ''}
+            className={`${errors.password || loginError ? Styles.inputError : ''}`}
             {...register('password')}
           />
           {errors.password && <span className={Styles.errorText}>{errors.password.message}</span>}
         </div>
-        {loginError && <div className={Styles.errorMessage}>{loginError}</div>} {/* Display error message */}
+        {loginError && <div className={Styles.errorMessage}>{loginError}</div>} {/* Exibe a mensagem de erro geral */}
         <div className={Styles.inputButtonGroup}>
           <button className={Styles.default} type="submit">Login</button>
           <span>OU</span>
-          <button className={Styles.googleButton} type="button"> {/* Changed type to button */}
+          <button className={Styles.googleButton} type="button">
             Entrar com Google
             <img src={googleImage} className={Styles.googleImg} alt='google image' />
           </button>

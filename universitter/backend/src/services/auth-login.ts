@@ -9,7 +9,7 @@ interface LoginRequest {
 
 interface LoginResponse {
   user: {
-    id: number
+    user_id: number
     nome: string
     email: string
   }
@@ -25,7 +25,7 @@ export class AuthLogin {
     const verifyPass = await bcrypt.compare(password, user.senha)
     if (!verifyPass) throw new Error('Email ou senha invalido!')
 
-    const token = jwt.sign({ id: user.id }, process.env.SECRETKEY ?? '', {
+    const token = jwt.sign({ id: user.user_id }, process.env.SECRETKEY ?? '', {
       expiresIn: '45m',
     })
 

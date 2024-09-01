@@ -2,7 +2,7 @@
 import { Knex } from 'knex'
 
 export interface Usuario {
-  id: number
+  user_id: number
   nome: string
   sobrenome: string
   email: string

@@ -13,6 +13,7 @@ import { AuthLogin } from '@/services/auth-login'
  */
 
 export async function login(request: FastifyRequest, reply: FastifyReply) {
+
   const loginSchema = z.object({
     email: z.string().email(),
     password: z.string(),

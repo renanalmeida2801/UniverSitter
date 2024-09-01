@@ -24,6 +24,7 @@ export async function authMiddleware(
 
   const { id } = jwt.verify(token, process.env.SECRETKEY ?? '') as JwtPayload
 
+  
   if (id) return true
-  else throw new Error('Token inválido')
+  else throw new Error('Token inválido'+token)
 }
