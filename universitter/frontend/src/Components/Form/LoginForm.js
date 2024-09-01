@@ -70,8 +70,8 @@ const LoginForm = (props) => {
             {...register('password')}
           />
           {errors.password && <span className={Styles.errorText}>{errors.password.message}</span>}
+          {loginError && <div className={Styles.errorText}>{loginError}</div>} {/* Exibe a mensagem de erro geral */}
         </div>
-        {loginError && <div className={Styles.errorMessage}>{loginError}</div>} {/* Exibe a mensagem de erro geral */}
         <div className={Styles.inputButtonGroup}>
           <button className={Styles.default} type="submit">Login</button>
           <span>OU</span>
