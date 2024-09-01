@@ -13,6 +13,7 @@ import Navbar from './Components/Layout/Navbar';
 import Styles from './index.css'
 import UserRegister from './Components/Pages/UserRegister';
 import SitterRegister from './Components/Pages/SitterRegister';
+import Login from './Components/Pages/Login';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       {/* <Container customClass='minHeight'> */}
         <Routes>
           <Route exact path='/' element={<Home/>}></Route>
+          <Route exact path='/login' element={<Login />}></Route> 
           <Route exact path='/help' element={<Help/>}></Route>
           <Route exact path='/user-register' element={<UserRegister/>}></Route>
           <Route exact path='/sitter-register' element={<SitterRegister/>}></Route>
