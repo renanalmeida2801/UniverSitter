@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 async function post(data) {
   try {
-    const response = await api.post('/users', data);
+    const response = await api.post('/userRegister', data);
     console.log('Resposta do servidor:', response.data);
   } catch (error) {
     console.error('Erro ao enviar dados:', error);

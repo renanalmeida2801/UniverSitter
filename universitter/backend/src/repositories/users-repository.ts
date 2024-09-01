@@ -12,6 +12,7 @@ export interface UsersRepository {
   findByName(query: string): Promise<Usuario[]>
   findByGroup(id_group: number): Promise<Usuario[]>
   delete(id: number): Promise<Usuario>
+  findByEmail(email: string): Promise<Usuario | null>
   // deleteByGroupId(id_group: number): Promise<Usuario[]>
 
   update(
