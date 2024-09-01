@@ -13,7 +13,7 @@ const loginSchema = z.object({
 });
 
 // Define the onSubmit function
-const onSubmit = (data) => {
+const onSubmit = async (data) => {
   console.log(data);
 };
 
