@@ -1,5 +1,6 @@
 import { Usuario } from '@/../@types/postgresKnex'
 import { UsersRepository } from '@/repositories/users-repository'
+import bcrypy from 'bcrypt'
 
 interface CreateUserUseCaseRequest {
   nome: string
@@ -23,11 +24,14 @@ export class CreateUserUseCase {
     senha,
     telefone,
   }: CreateUserUseCaseRequest): Promise<CreateUserUseCaseResponse> {
+    
+    const hashPass = await bcrypy.hash(senha, 10)
+
     const user = await this.userRepository.create(
       nome,
       sobrenome,
       email,
-      senha,
+      hashPass,
       telefone,
     )
 

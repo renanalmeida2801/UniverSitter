@@ -10,11 +10,15 @@ import { listSitter } from './controllers/sitters/list'
 import { deleteSitter } from './controllers/sitters/delete'
 import { editSitter } from './controllers/sitters/edit'
 
-
+import { login } from './controllers/auth/login'
 
 // Typescript exemple to use Models.
 export async function appRoutes(app: FastifyInstance) {
+  
+  app.post('/login', login)
+  
   // Users
+  
   app.post('/users', registerUser)
   app.get('/users', listUser)
   app.put('/users', editUser) // All values are optional, just edit sent what you want
@@ -25,4 +29,5 @@ export async function appRoutes(app: FastifyInstance) {
   app.get('/sitters', listSitter)
   app.put('/sitters', editSitter) // All values are optional, just edit sent what you want
   app.delete('/sitters', deleteSitter)
+
 }

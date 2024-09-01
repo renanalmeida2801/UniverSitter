@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import api from '../../services/api.ts';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Styles from './LoginForm.module.css';
@@ -8,13 +9,27 @@ import googleImage from '../../img/google 1.png';
 
 // Define schema with Zod
 const loginSchema = z.object({
-  login: z.string().email('E-mail digitado inválido.'),
+  email: z.string().email('E-mail digitado inválido.'),
   password: z.string().min(1, 'Necessário inserir a senha!'),
 });
 
-// Define the onSubmit function
+async function post(data) {
+  console.log(data)
+    try {
+        const response = await api.post('/login', data);
+        const token = response.data.data
+        console.log(token)
+        sessionStorage.setItem('authToken',token)
+        api.defaults.headers.common['Authorization'] = 'Bearer ${token}';
+        console.log('Resposta do servidor:', response.data);
+    } catch (error) {
+        console.error('Erro ao enviar dados:', error);
+    }
+}
+
 const onSubmit = async (data) => {
-  console.log(data);
+    post(data)
+    console.log(data);
 };
 
 // Define the LoginForm component
@@ -36,10 +51,10 @@ const LoginForm = (props) => {
           <input
             placeholder='E-mail'
             type="text"
-            className={errors.login ? Styles.inputError : ''}
-            {...register('login')}
+            className={errors.email ? Styles.inputError : ''}
+            {...register('email')}
           />
-          {errors.login && <span className={Styles.errorText}>{errors.login.message}</span>}
+          {errors.email && <span className={Styles.errorText}>{errors.email.message}</span>}
 
           <input
             placeholder='Senha'
