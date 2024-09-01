@@ -3,6 +3,7 @@
     justify-content: center;
     margin-top: none;
     height: 100%;
+    position: relative;
 }
 
 .form {
@@ -12,7 +13,7 @@
     margin-top: none;
     margin: 2em;
     background-color: #fffff7;
-    position: relative;
+    position: absolute;
 }
 
 .form h3 {
