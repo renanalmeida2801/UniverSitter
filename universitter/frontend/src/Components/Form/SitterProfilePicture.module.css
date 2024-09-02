@@ -1,14 +1,14 @@
-.picture{
-    width: 180px; 
-    height: 180px; 
+.picture {
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    left: 25%;
-    top: 33%;
+    position: relative;
+    left: 150px;
+    top: -30px;
 }
 
 .img {

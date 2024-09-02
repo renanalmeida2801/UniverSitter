@@ -19,11 +19,11 @@ function SitterProfilePicture() {
         const file = event.target.files[0];
         if (file) {
             const reader = new FileReader();
-            reader.onload = function(e) {
+            reader.onload = function (e) {
                 const img = new Image();
                 img.src = e.target.result;
 
-                img.onload = function() {
+                img.onload = function () {
                     // Create a canvas element to draw the resized image
                     const canvas = document.createElement('canvas');
                     const ctx = canvas.getContext('2d');
@@ -44,6 +44,7 @@ function SitterProfilePicture() {
                             height = maxSize;
                         }
                     }
+
 
                     // Set the canvas dimensions to the new size
                     canvas.width = width;

@@ -1,7 +1,7 @@
 import styles from './SitterForm.module.css'
 import { useState } from 'react'
 import api from '../../services/api.ts';
-import {useForm} from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import CategoryDropdown from './CategoryDropdown';
 import SitterProfilePicture from './SitterProfilePicture';
 
@@ -17,28 +17,28 @@ async function post(data) {
 
 function SitterForm() {
 
-    const[selected, setSelected] = useState("Selecione a categoria");
+    const [selected, setSelected] = useState("Selecione a categoria");
     const { register, handleSubmit } = useForm();
     const onSubmit = (data) => {
         console.log(data.cpf)
         const enderecoCompleto = `${data.endereco}, ${data.numero}, ${data.bairro}, ${data.complemento}, ${data.referencia}`;
-    
-    // Adicionando a string de endereço de volta aos dados
+
+        // Adicionando a string de endereço de volta aos dados
         const dadosComEndereco = {
             ...data,
             enderecoCompleto: enderecoCompleto
         };
-        
+
         post(dadosComEndereco)
-      };
+    };
 
     return (
         <div className={styles.container}>
             <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
                 <h3 className={styles.h3}>Torne-se um cuidador</h3>
                 {/* <label>preencha os dados abaixo</label><br /> */}
-                <SitterProfilePicture/>
-                <CategoryDropdown selected={selected} setSelected={setSelected}/>
+                <SitterProfilePicture />
+                <CategoryDropdown selected={selected} setSelected={setSelected} />
 
                 <div className={styles.form_group}>
                     <input type='text'{...register("cpf")} className={styles.cpf} placeholder='CPF'></input>
