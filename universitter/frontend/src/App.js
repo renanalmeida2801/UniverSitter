@@ -1,43 +1,30 @@
-
-
+import React, { useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Components/Pages/Home';
 import Help from './Components/Pages/Help';
-import Company from './Components/Pages/UserRegister';
-// import NewProject from './Components/Pages/NewProject';
-// import Projects from './Components/Pages/Projects';
-
-// import Container from './Components/Layout/Container'
-import Navbar from './Components/Layout/Navbar';
-// import Footer from './Components/Layout/Footer'
-import Styles from './index.css'
 import UserRegister from './Components/Pages/UserRegister';
 import SitterRegister from './Components/Pages/SitterRegister';
 import Login from './Components/Pages/Login';
 import FindSitter from './Components/Pages/FindSitter';
+import Navbar from './Components/Layout/Navbar';
+import AuthContext from './Context/auth'; // Import the context
 
 function App() {
-  return (
+  const { user } = useContext(AuthContext); // Use context correctly
 
+  return (
     <Router>
       <Navbar />
-      {/* <Container customClass='minHeight'> */}
       <Routes>
-        <Route exact path='/' element={<Home />}></Route>
-        <Route exact path='/login' element={<Login />}></Route>
-        <Route exact path='/help' element={<Help />}></Route>
-        <Route exact path='/user-register' element={<UserRegister />}></Route>
-        <Route exact path='/sitter-register' element={<SitterRegister />}></Route>
-        <Route exact path='/find-sitter' element={<FindSitter />}></Route>
-        {/* <Route exact path='/company' element={<Company/>}></Route>
-          <Route exact path='/contact' element={<Contact/>}></Route>
-          <Route exact path='/newproject' element={<NewProject/>}></Route> */}
+        <Route path='/' element={<Home />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/help' element={<Help />} />
+        <Route path='/user-register' element={<UserRegister />} />
+        <Route path='/sitter-register' element={user ? <SitterRegister /> : <Login />} />
+        <Route path='/find-sitter' element={user ? <FindSitter /> : <Login />} />
+        {/* Add other routes as needed */}
       </Routes>
-      {/* </Container> */}
-
-      {/* <Footer/> */}
     </Router>
-
   );
 }
 
