@@ -1,52 +1,61 @@
 import { createContext, useEffect, useState } from "react";
-import api from '../services/api.ts'
+import api from '../services/api.ts';
 
-export const AuthContext = createContext({})
+export const AuthContext = createContext({
+  user: null,
+  signin: () => Promise.resolve(),
+  logout: () => { },
+  existEmail: false
+});
+
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState()
-  const [existEmail, setExistEmail] = useState(false)
+  const [user, setUser] = useState(null);
+  const [existEmail, setExistEmail] = useState(false);
 
   useEffect(() => {
-    const userToken = localStorage.getItem("user_token")
-    const userStorage = localStorage.getItem("users_db")
+    const userToken = localStorage.getItem("user_token");
 
-    if (userToken && userStorage) {
-      const hasUser = JSON.parse(userStorage)?.filter(
-        user => user.email === JSON.parse(userToken).email
-      )
-      if (hasUser) setUser(hasUser[0])
+    if (userToken) {
+      const tokenData = JSON.parse(userToken);
+      // Optionally validate token with the server here
+      setUser({ email: tokenData.email }); // Simplified example; adjust as needed
     }
-  }, [])
+  }, []);
 
-  const signin = (email, password) => {
-    const usersStorage = JSON.parse(localStorage.getItem("users_db"))
+  const signin = async ({ email, senha }) => {
+    try {
+      const response = await api.post('/login', { email, password: senha });
+      const token = response.data.token;
+      const userData = response.data.user; // Adjust according to your API response
 
-    const hasUser = usersStorage?.filter((user) => user.email === email)
-
-    if (hasUser?.length) {
-      if (hasUser[0].email === email && hasUser[0].password === password) {
-        const token = Math.random().toString(36).substring(2);
+      if (token) {
         localStorage.setItem("user_token", JSON.stringify({ email, token }));
-        setUser({ email, password })
+        setUser(userData); // Update user state with received user data
         return;
       } else {
-        return "E-mail ou senha incorretos"
+        return "E-mail ou senha incorretos";
       }
-    } else {
-      return "Usuário não cadastrado"
+    } catch (error) {
+      console.error('Error during login:', error);
+      return "E-mail ou senha inválidos. Por favor, tente novamente.";
     }
-  }
+  };
 
-  async function findEmail(email) {
-    setExistEmail(await api.get('user/findUserEmail', {
-      params: {
-        email
-      }
-    }).then(e => e.data.data === null ? false : true))
+  const logout = () => {
+    // Remove token from localStorage
+    localStorage.removeItem("user_token");
 
-    return <AuthContext.Provider>{children}</AuthContext.Provider >
-  }
-}
+    // Optionally, make a request to invalidate the token on the server
 
+    // Clear user state
+    setUser(null);
+  };
 
-export default AuthContext
+  return (
+    <AuthContext.Provider value={{ user, signin, logout, existEmail }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
+
+export default AuthContext;
