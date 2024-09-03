@@ -12,7 +12,7 @@
     height: 750px;
     margin-top: none;
     margin: 2em;
-    background-color: #fffff7;
+    background-color: var(--branco-craro);
     position: absolute;
 }
 
@@ -25,7 +25,7 @@
 
 
 .form input::placeholder {
-    color: #4B8D52;
+    color: var(--verde-marromenu);
 }
 
 
@@ -37,12 +37,12 @@
     padding: 2.2em;
     margin: 0.5em;
     margin-left: 5em;
-    border: 2px solid #4B8D52;
+    border: 2px solid var(--verde-marromenu);
     border-radius: 20px;
-    background-color: #fffff7;
+    background-color: var(--branco-craro);
     font-size: 1.2em;
     box-sizing: border-box;
-    color: #4B8D52;
+    color: var(--verde-marromenu);
 
 }
 
@@ -55,12 +55,12 @@
     padding: 1em;
     margin: 0.5em;
     margin-left: 5em;
-    border: 2px solid #4B8D52;
+    border: 2px solid var(--verde-marromenu);
     border-radius: 20px;
-    background-color: #fffff7;
+    background-color: var(--branco-craro);
     font-size: 1.2em;
     box-sizing: border-box;
-    color: #4B8D52;
+    color: var(--verde-marromenu);
 }
 
 .form .endereco {
@@ -71,12 +71,12 @@
     padding: 1em;
     margin: 0.5em;
     margin-left: 5em;
-    border: 2px solid #4B8D52;
+    border: 2px solid var(--verde-marromenu);
     border-radius: 20px;
-    background-color: #fffff7;
+    background-color: var(--branco-craro);
     font-size: 1.2em;
     box-sizing: border-box;
-    color: #4B8D52;
+    color: var(--verde-marromenu);
 }
 
 .form .number {
@@ -87,12 +87,12 @@
     padding: 1em;
     margin: 0.5em;
     margin-left: 5em;
-    border: 2px solid #4B8D52;
+    border: 2px solid var(--verde-marromenu);
     border-radius: 20px;
-    background-color: #fffff7;
+    background-color: var(--branco-craro);
     font-size: 1.2em;
     box-sizing: border-box;
-    color: #4B8D52;
+    color: var(--verde-marromenu);
 }
 
 .form .bairro {
@@ -104,12 +104,12 @@
     padding: 1em;
     margin: 0.5em;
     margin-left: 5em;
-    border: 2px solid #4B8D52;
+    border: 2px solid var(--verde-marromenu);
     border-radius: 20px;
-    background-color: #fffff7;
+    background-color: var(--branco-craro);
     font-size: 1.2em;
     box-sizing: border-box;
-    color: #4B8D52;
+    color: var(--verde-marromenu);
 }
 
 
@@ -123,12 +123,12 @@
     margin: 0.5em;
     margin-top: 1em;
     margin-left: 5em;
-    border: 2px solid #4B8D52;
+    border: 2px solid var(--verde-marromenu);
     border-radius: 20px;
-    background-color: #fffff7;
+    background-color: var(--branco-craro);
     font-size: 1.2em;
     box-sizing: border-box;
-    color: #4B8D52;
+    color: var(--verde-marromenu);
 }
 
 .form .referencia {
@@ -141,12 +141,12 @@
     margin: 0.5em;
     margin-top: 1em;
     margin-left: 5em;
-    border: 2px solid #4B8D52;
+    border: 2px solid var(--verde-marromenu);
     border-radius: 20px;
-    background-color: #fffff7;
+    background-color: var(--branco-craro);
     font-size: 1.2em;
     box-sizing: border-box;
-    color: #4B8D52;
+    color: var(--verde-marromenu);
 }
 
 .form .button {
@@ -155,7 +155,7 @@
     bottom: 25px;
     padding: 0.4em 10%;
     /* Espaçamento interno */
-    background-color: #4B8D52;
+    background-color: var(--verde-marromenu);
     /* Cor de fundo */
     color: white;
     /* Cor do texto */
@@ -175,7 +175,7 @@
 }
 
 .button:hover {
-    background-color: #45a049;
+    background-color: var(--verde-depressivo);
     /* Cor de fundo ao passar o mouse */
 }
 

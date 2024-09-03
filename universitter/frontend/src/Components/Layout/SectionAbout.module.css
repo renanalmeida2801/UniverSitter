@@ -1,7 +1,7 @@
 .container{
     display: flex;
     flex-direction: row;
-    background-color: #4B8D52;
+    background-color: var(--verde-marromenu);
     /* padding-bottom: 10px; */
 }
 
@@ -22,7 +22,7 @@
 }
 
 .button{
-    color: #4B8D52;
+    color: var(--verde-marromenu);
     font-family:'KoHo', sans-serif;
     text-decoration: none;
     text-align: center;

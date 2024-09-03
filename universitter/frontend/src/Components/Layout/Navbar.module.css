@@ -2,7 +2,7 @@
 .navbar {
   display: flex;
   justify-content: center;
-  background-color: #ffffff;
+  background-color: var(--branco-craro);
   padding: 0.5em;
   align-items: center;
   width: 100%;
@@ -22,7 +22,7 @@
 
 /* Logout button hover effect */
 .logout:hover {
-  background-color: #ff3333;
+  background-color: var(--vermelho);
   color: white;
   box-shadow: rgba(255, 0, 0, 0.2) 0px 2px 1px,
     rgba(255, 0, 0, 0.2) 0px 4px 2px,
@@ -33,7 +33,7 @@
 
 /* Login button hover effect */
 .login:hover {
-  background-color: #33ff99;
+  background-color: var(--verde-craro);
   color: white;
   box-shadow: rgba(0, 128, 0, 0.2) 0px 2px 1px,
     rgba(0, 128, 0, 0.2) 0px 4px 2px,
@@ -67,7 +67,7 @@
 
 /* Links styling */
 .item a {
-  color: #000;
+  color: black;
   text-decoration: none;
   font-family: 'KoHo', sans-serif;
   font-size: 1.5em;
@@ -77,30 +77,30 @@
 /* Active link styling */
 .item a.active {
   color: white;
-  background-color: #4B8D52;
+  background-color: var(--verde-marromenu);
   padding: 20px;
   border-radius: 10px;
   font-weight: bold;
-  border-bottom: 2px solid #4B8D52;
+  border-bottom: 2px solid var(--verde-marromenu);
 }
 
 /* Hover effect for all links */
 .item a:hover {
-  color: #4B8D52;
+  color: var(--verde-marromenu);
   font-weight: bold;
 }
 
 /* Ensure active link maintains its styling on hover */
 .item a.active:hover {
-  color: #ffffff;
-  background-color: #4B8D52;
+  color: var(--branco-craro);
+  background-color: var(--verde-marromenu);
 }
 
 /* Menu links styling */
 .menu a {
   margin-top: 10px;
   margin-right: 1em;
-  color: #000;
+  color: black;
   text-decoration: none;
   font-family: 'KoHo', sans-serif;
   font-size: 1.5em;
@@ -110,5 +110,5 @@
 }
 
 .menu a:hover {
-  color: #4B8D52;
+  color: var(--verde-marromenu);
 }
