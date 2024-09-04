@@ -1,13 +1,15 @@
-.container{
+.container {
     background-color: white;
     margin: none;
     padding: none;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     padding-bottom: 5%;
 }
 
-.h1{
+.h1 {
+    flex-wrap: wrap;
     padding-top: 50px;
     text-align: center;
     font-size: 55px;
@@ -16,7 +18,8 @@
 }
 
 
-.midinfo{
+.midinfo {
+    flex-wrap: wrap;
     padding-left: 28px;
     padding-right: 28px;
     display: flex;
@@ -25,7 +28,8 @@
     justify-content: space-between;
 }
 
-.midinfo div{
+.midinfo div {
+    flex-wrap: wrap;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -33,31 +37,34 @@
     max-width: 30%;
 }
 
-.img{
+.img {
+    flex-wrap: wrap;
     width: 170px;
     height: 170px;
 }
 
-.subtext{
+.subtext {
+    flex-wrap: wrap;
     font-family: 'KoHo', sans-serif;
     font-size: 45px;
     text-align: center;
 
 }
 
-.lastinfo{
+.lastinfo {
+    flex-wrap: wrap;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 1% 2%;
 }
 
-.p{
+.p {
     font-family: 'KoHo', sans-serif;
     font-size: 25px;
     max-width: 30%;
     word-wrap: break-word;
     /* text-align: center; */
     text-align: center;
-    
+
 }
