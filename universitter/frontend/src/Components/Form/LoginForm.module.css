@@ -30,7 +30,7 @@
 }
 
 .h1 {
-    color: black;
+    color: black;;
     padding: 0;
     margin: 0;
     font-size: 4rem;
@@ -67,7 +67,7 @@
 
 input {
     padding: 20px;
-    border: 1px solid #4B8D52;
+    border: 1px solid var(--verde-marromenu);
     width: 80%;
     border-radius: 20px;
     font-size: 1.5rem;
@@ -76,7 +76,7 @@ input {
 }
 
 input::placeholder {
-    color: #4B8D52;
+    color: var(--verde-marromenu);
 }
 
 input+input {
@@ -113,15 +113,15 @@ button:hover {
 }
 
 .default {
-    background-color: #4B8D52;
+    background-color: var(--verde-marromenu);
     border: 1px solid gray;
     color: white;
 }
 
 .googleButton {
     background-color: transparent;
-    border: 1px solid #4B8D52;
-    color: #4B8D52;
+    border: 1px solid var(--verde-marromenu);
+    color: var(--verde-marromenu);
     display: flex;
     align-content: center;
     justify-items: center;
@@ -132,5 +132,5 @@ button:hover {
 
 /* Placeholder color for the default state */
 :-ms-input-placeholder {
-    color: #4B8D52;
+    color: var(--verde-marromenu);
 }
