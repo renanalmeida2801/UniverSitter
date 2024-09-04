@@ -1,0 +1,16 @@
+.stars-view {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.star {
+  box-sizing: border-box;
+  display: inline-block;
+  margin-right: 6px;
+  cursor: default;
+}
+
+.star.filled {
+  background-size: cover;
+}

@@ -29,7 +29,8 @@ export const AuthProvider = ({ children }) => {
       const userData = response.data.user; // Adjust according to your API response
 
       if (token) {
-        localStorage.setItem("user_token", JSON.stringify({ email, token }));
+        api.defaults.headers.common['Authorization'] = `Bearer ${token}`; // Set token for all following requests
+        localStorage.setItem("user_token", JSON.stringify(token));
         setUser(userData); // Update user state with received user data
         return;
       } else {
