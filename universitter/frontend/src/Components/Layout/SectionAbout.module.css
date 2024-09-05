@@ -36,14 +36,19 @@
     font-family: 'KoHo', sans-serif;
     text-decoration: none;
     text-align: center;
-    font-size: clamp(12px, 3vw, 30px);
-    /* Font size ajustável conforme a resolução */
-    margin-left: 2vw;
-    /* Margem que se ajusta à largura da viewport */
-    padding: clamp(5px, 1vw, 10px) clamp(10px, 2vw, 20px);
-    /* Padding que diminui junto com a tela */
+    font-size: clamp(10px, 2vw, 30px);
+    /* Tamanho da fonte responsivo */
+    padding: 10px 20px;
     background-color: white;
     border-radius: 20px;
+    margin: 0 1em;
+    /* Espaçamento entre os botões */
+    width: clamp(150px, 30vw, 400px);
+    height: clamp(20px, 10vh, 60px);
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    /* Largura responsiva para os botões */
 }
 
 .img {
@@ -67,12 +72,12 @@
 .div_button {
     position: absolute;
     display: flex;
-    /* Necessário para usar flexbox */
+    /* Alinha os botões lado a lado */
     flex-direction: row;
     justify-content: center;
     align-items: center;
     width: 100%;
-    /* Para garantir que os botões fiquem centralizados */
-    bottom: 20px;
-    /* Ou ajuste conforme necessário */
+    height: 5%;
+    /* Ajusta a div ao tamanho da tela */
+    flex-wrap: nowrap;
 }
