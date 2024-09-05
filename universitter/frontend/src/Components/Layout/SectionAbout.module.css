@@ -36,12 +36,14 @@
     font-family: 'KoHo', sans-serif;
     text-decoration: none;
     text-align: center;
-    font-size: clamp(15px, 3vw, 30px);
-    margin-left: 3em;
-    padding: 10px 20px;
+    font-size: clamp(12px, 3vw, 30px);
+    /* Font size ajustável conforme a resolução */
+    margin-left: 2vw;
+    /* Margem que se ajusta à largura da viewport */
+    padding: clamp(5px, 1vw, 10px) clamp(10px, 2vw, 20px);
+    /* Padding que diminui junto com a tela */
     background-color: white;
     border-radius: 20px;
-
 }
 
 .img {
@@ -57,15 +59,20 @@
 
 .div_text {
     position: relative;
-    width: 900px;
+    width: 50%;
     height: 100%;
     display: block;
 }
 
 .div_button {
     position: absolute;
+    display: flex;
+    /* Necessário para usar flexbox */
     flex-direction: row;
     justify-content: center;
     align-items: center;
-
+    width: 100%;
+    /* Para garantir que os botões fiquem centralizados */
+    bottom: 20px;
+    /* Ou ajuste conforme necessário */
 }
