@@ -1,6 +1,8 @@
 .body {
     margin: none;
     padding: none;
+    background-color: var(--creme-2);
+
     background-color: #E9FCCF;
     position: relative;
 }

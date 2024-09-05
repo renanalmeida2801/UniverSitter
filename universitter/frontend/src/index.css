@@ -12,6 +12,17 @@ body,
   height: 100%;
   max-width: 100%;
   overflow-x: hidden;
+
+  --verde-musgo: #28cc82;
+  --cinza: #333333;
+  --verde-craro: #33ff99;
+  --verde-depressivo: #45a049;
+  --verde-marromenu: #4B8D52;
+  --cinza-craro: #5a5b5c;
+  --creme: #DAEBC2;
+  --creme-2: #E9FCCF;
+  --vermelho: #ff3333;
+  --branco-craro: #fffff7;
 }
 
 
@@ -30,13 +41,13 @@ body,
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #33ff99;
+  background-color: var(--verde-craro);
   /* Color of the scrollbar thumb */
   border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #28cc82;
+  background-color: var(--verde-musgo);
   /* Color of the scrollbar thumb when hovered */
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
   /* Optional shadow for better visibility */
@@ -46,7 +57,7 @@ body,
 * {
   scrollbar-width: thin;
   /* Makes the scrollbar thinner */
-  scrollbar-color: #33ff99 #f0f0f0;
+  scrollbar-color: var(--verde-craro) #f0f0f0;
   /* Scrollbar thumb color and track color */
 }
 

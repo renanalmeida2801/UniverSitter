@@ -1,4 +1,9 @@
 .container {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--verde-marromenu);
+
+    /* padding-bottom: 10px; */
     background-color: #4B8D52;
     margin: 0;
     padding: 0;
@@ -26,7 +31,6 @@
 }
 
 .button {
-    position: relative;
     color: #4B8D52;
     font-family: 'KoHo', sans-serif;
     text-decoration: none;
