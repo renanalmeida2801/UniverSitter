@@ -8,7 +8,8 @@
     margin: 0;
     padding: 0;
     position: relative;
-    height: 55vh;
+    height: 530px;
+    max-height: 530px;
     flex-direction: row;
     display: flex;
 }
@@ -46,13 +47,12 @@
 .img {
     width: 55%;
     max-width: 100%;
-    height: 54.7vh;
+    height: 100%;
     position: absolute;
 }
 
 .div_img {
     right: 142px;
-    top: 000px;
 }
 
 .div_text {
@@ -60,4 +60,12 @@
     width: 900px;
     height: 100%;
     display: block;
+}
+
+.div_button {
+    position: absolute;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
 }
