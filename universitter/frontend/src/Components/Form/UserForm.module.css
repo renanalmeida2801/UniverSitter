@@ -144,8 +144,8 @@
   bottom: 150px;
   /* Tamanho do texto */
   color: black;
-    /* Cor do texto */
-    cursor: pointer;
+  /* Cor do texto */
+  cursor: pointer;
   /* Muda o cursor ao passar sobre o texto */
   padding-left: 0.5em;
 }
