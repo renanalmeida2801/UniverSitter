@@ -2,7 +2,7 @@ import { Sitter } from '@/../@types/postgresKnex'
 
 export interface SitterRepository {
   create(
-    id_user: number,
+    user_id: number,
     descricao: string,
     disponibilidade: boolean,
     rating: number,
@@ -16,7 +16,7 @@ export interface SitterRepository {
   findByUserId(id: number): Promise<Sitter>
   update(
     id: number,
-    id_user?: number,
+    user_id?: number,
     descricao?: string,
     disponibilidade?: boolean,
     rating?: number,

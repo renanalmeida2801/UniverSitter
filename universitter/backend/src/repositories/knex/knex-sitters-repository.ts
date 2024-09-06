@@ -4,7 +4,7 @@ import { Sitter } from 'postgresKnex'
 
 export class KnexSittersRepository implements SitterRepository {
   async create(
-    id_user: number,
+    user_id: number,
     descricao: string,
     disponibilidade: boolean,
     rating: number,
@@ -13,7 +13,7 @@ export class KnexSittersRepository implements SitterRepository {
     foto: string
   ): Promise<Sitter> {
     return await postgres('sitter').insert({
-      id_user,
+      user_id,
       descricao,
       disponibilidade,
       rating,
@@ -35,7 +35,7 @@ export class KnexSittersRepository implements SitterRepository {
   }
 
   async findByUserId(id: number): Promise<Sitter> {
-    return await postgres('sitter').where('id_user', id).first();
+    return await postgres('sitter').where('user_id', id).first();
   }
 
 
@@ -74,7 +74,7 @@ export class KnexSittersRepository implements SitterRepository {
 
   async update(
     id: number,
-    id_user: number,
+    user_id: number,
     descricao: string,
     disponibilidade: boolean,
     rating: number,
@@ -87,7 +87,7 @@ export class KnexSittersRepository implements SitterRepository {
 
     return await postgres('sitter').where('ID', id).update({
       id,
-      id_user,
+      user_id,
       descricao,
       disponibilidade,
       rating,

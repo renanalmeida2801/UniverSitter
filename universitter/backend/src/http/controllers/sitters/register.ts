@@ -2,7 +2,6 @@ import { z } from 'zod'
 import { FastifyRequest, FastifyReply } from 'fastify'
 import { CreateSitterUseCase } from '@/services/create-sitters'
 import { KnexSittersRepository } from '@/repositories/knex/knex-sitters-repository'
-import { randomInt } from 'crypto'
 
 /**
  * Register a new User
@@ -16,17 +15,19 @@ import { randomInt } from 'crypto'
  * @example {"id_grupo":1,"nome":"string","sobrenome":"string","email":"string","senha":"string","telefone":"string"}
  * @example POST localhost:3000/Users
  */
-export async function registerSitter(request: FastifyRequest, reply: FastifyReply) {
+export async function registerSitter(
+  request: FastifyRequest,
+  reply: FastifyReply,
+) {
   const registerBodySchema = z.object({
-    id_user: z.number().default(randomInt(100)),
+    user_id: z.number(),
     descricao: z.string(),
     disponibilidade: z.boolean().default(true),
     rating: z.number().default(0),
     endereco: z.string(),
     cpf: z.string(),
-    image: z.string()
+    image: z.string(),
   })
-
 
   const data = registerBodySchema.parse(request.body)
 
@@ -35,7 +36,7 @@ export async function registerSitter(request: FastifyRequest, reply: FastifyRepl
     const registerUseCase = new CreateSitterUseCase(sittersRepository)
     const { sitter } = await registerUseCase.execute({
       image: data.image,
-      id_user: data.id_user,
+      user_id: data.user_id,
       descricao: data.descricao,
       disponibilidade: data.disponibilidade,
       rating: data.rating,
@@ -48,6 +49,7 @@ export async function registerSitter(request: FastifyRequest, reply: FastifyRepl
     })
   } catch (err) {
     if (err instanceof Error) {
+      console.log(err)
       return reply.status(409).send({
         message: err.message,
       })

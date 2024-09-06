@@ -3,7 +3,7 @@ import { SitterRepository } from '@/repositories/sitters-repository'
 
 interface EditSitterUseCaseRequest {
     id: number,
-    id_user?: number,
+    user_id?: number,
     descricao?: string,
     disponibilidade?: boolean,
     rating?: number,
@@ -20,7 +20,7 @@ export class EditSitterUseCase {
 
   async execute({
     id,
-    id_user,
+    user_id,
     descricao,
     disponibilidade,
     rating,
@@ -29,7 +29,7 @@ export class EditSitterUseCase {
   }: EditSitterUseCaseRequest): Promise<EditSitterUseCaseResponse> {
     const sitter = await this.sittersRepository.update(
       id,
-      id_user,
+      user_id,
       descricao,
       disponibilidade,
       rating,

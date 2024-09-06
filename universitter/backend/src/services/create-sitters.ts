@@ -7,7 +7,7 @@ import { getDownloadURL, ref, uploadBytesResumable, uploadString } from 'firebas
 import { unknown } from 'zod'
 
 interface CreateSitterUseCaseRequest {
-  id_user: number,
+  user_id: number,
   descricao: string,
   disponibilidade: boolean,
   rating: number,
@@ -24,7 +24,7 @@ export class CreateSitterUseCase {
   constructor(private readonly sitterRepository: SitterRepository) { }
 
   async execute({
-    id_user,
+    user_id,
     descricao,
     disponibilidade,
     rating,
@@ -32,17 +32,17 @@ export class CreateSitterUseCase {
     cpf,
     image
   }: CreateSitterUseCaseRequest) {
-    const isRegistered = await this.sitterRepository.findByUserId(id_user)
+    const isRegistered = await this.sitterRepository.findByUserId(user_id)
 
     if (isRegistered)
       throw new Error("Usuário registrado")
 
-    const storageRef = ref(storage, `image/${id_user}.png`)
+    const storageRef = ref(storage, `image/${user_id}.png`)
     await uploadString(storageRef, image, 'data_url');
     const url = await getDownloadURL(storageRef);
 
     const sitter = await this.sitterRepository.create(
-      id_user,
+      user_id,
       descricao,
       disponibilidade,
       rating,

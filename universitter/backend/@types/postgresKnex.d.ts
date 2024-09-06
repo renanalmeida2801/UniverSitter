@@ -11,7 +11,7 @@ export interface Usuario {
 }
 export interface Sitter {
   id: number,
-  id_user: number,
+  user_id: number,
   descricao: string,
   disponibilidade: boolean,
   rating: number,
