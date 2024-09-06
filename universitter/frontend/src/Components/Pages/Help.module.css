@@ -1,5 +1,5 @@
 .container {
-    background-color: #f0f0f0;
+    background-color: var(--branco-craro);
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -11,7 +11,8 @@
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 57%; /* Ajuste o valor conforme necessário */
+    top: 57%;
+    /* Ajuste o valor conforme necessário */
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -32,19 +33,20 @@
 }
 
 .section h2 {
-    margin: 5px 0; /* Ajuste a margem superior e inferior */
+    margin: 5px 0;
+    /* Ajuste a margem superior e inferior */
     background-color: transparent;
-    color: #4B8D52;
+    color: var(--verde-marromenu);
 }
 
 .section p {
-    background-color: #E9FCCF;
+    background-color: var(--creme-2);
     margin: 0;
-    font-family:'KoHo', sans-serif;
+    font-family: 'KoHo', sans-serif;
     padding: 10px;
     font-weight: 600;
     border-radius: 4px;
-    color: #4B8D52;
+    color: var(--verde-marromenu);
     font-size: 0.80rem;
 }
 
@@ -52,9 +54,12 @@
     position: relative;
     display: flex;
     flex-direction: row;
-    align-items: center; /* Alinha verticalmente os itens */
-    justify-content: center; /* Centraliza horizontalmente */
-    margin-bottom: 10px; /* Espaçamento abaixo do cabeçalho */
+    align-items: center;
+    /* Alinha verticalmente os itens */
+    justify-content: center;
+    /* Centraliza horizontalmente */
+    margin-bottom: 10px;
+    /* Espaçamento abaixo do cabeçalho */
 }
 
 .containerFooter {
@@ -65,13 +70,16 @@
 }
 
 .headerTitle {
-    font-size: 2.5rem; /* Ajuste o tamanho da fonte conforme necessário */
-    color: #333;
-    margin: 0; /* Remove margens padrão ao redor do título */
+    font-size: 2.5rem;
+    /* Ajuste o tamanho da fonte conforme necessário */
+    color: var(--cinza);
+    margin: 0;
+    /* Remove margens padrão ao redor do título */
 }
 
 .img {
     width: 40px;
     height: 40px;
-    margin: 0 10px; /* Ajusta o espaço horizontal entre as imagens e o título */
+    margin: 0 10px;
+    /* Ajusta o espaço horizontal entre as imagens e o título */
 }
