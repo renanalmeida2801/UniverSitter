@@ -1,4 +1,4 @@
-import { postgres } from '@/database'
+import { postgres } from '@/config/database'
 import { SitterRepository } from '../sitters-repository'
 import { Sitter } from 'postgresKnex'
 
@@ -10,6 +10,7 @@ export class KnexSittersRepository implements SitterRepository {
     rating: number,
     endereco: string,
     cpf: string,
+    foto: string
   ): Promise<Sitter> {
     return await postgres('sitter').insert({
       id_user,
@@ -18,6 +19,7 @@ export class KnexSittersRepository implements SitterRepository {
       rating,
       endereco,
       cpf,
+      foto,
     })
   }
 
@@ -31,6 +33,11 @@ export class KnexSittersRepository implements SitterRepository {
 
     return sitter
   }
+
+  async findByUserId(id: number): Promise<Sitter> {
+    return await postgres('sitter').where('id_user', id).first();
+  }
+
 
   // TODO: Fix this after make groups.
   async deleteByGroupId(id_group: number): Promise<Sitter[]> {

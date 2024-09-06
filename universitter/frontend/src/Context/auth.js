@@ -30,6 +30,7 @@ export const AuthProvider = ({ children }) => {
 
       if (token) {
         localStorage.setItem("user_token", JSON.stringify({ email, token }));
+        api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         setUser(userData); // Update user state with received user data
         return;
       } else {
