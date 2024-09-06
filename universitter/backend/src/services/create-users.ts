@@ -15,7 +15,7 @@ interface CreateUserUseCaseResponse {
 }
 
 export class CreateUserUseCase {
-  constructor(private readonly userRepository: UsersRepository) {}
+  constructor(private readonly userRepository: UsersRepository) { }
 
   async execute({
     nome,
@@ -24,7 +24,7 @@ export class CreateUserUseCase {
     senha,
     telefone,
   }: CreateUserUseCaseRequest): Promise<CreateUserUseCaseResponse> {
-    
+
     const hashPass = await bcrypy.hash(senha, 10)
 
     const user = await this.userRepository.create(

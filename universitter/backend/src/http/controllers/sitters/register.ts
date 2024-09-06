@@ -24,7 +24,9 @@ export async function registerSitter(request: FastifyRequest, reply: FastifyRepl
     rating: z.number().default(0),
     endereco: z.string(),
     cpf: z.string(),
+    image: z.string()
   })
+
 
   const data = registerBodySchema.parse(request.body)
 
@@ -32,6 +34,7 @@ export async function registerSitter(request: FastifyRequest, reply: FastifyRepl
     const sittersRepository = new KnexSittersRepository()
     const registerUseCase = new CreateSitterUseCase(sittersRepository)
     const { sitter } = await registerUseCase.execute({
+      image: data.image,
       id_user: data.id_user,
       descricao: data.descricao,
       disponibilidade: data.disponibilidade,

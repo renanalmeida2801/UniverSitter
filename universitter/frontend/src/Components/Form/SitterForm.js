@@ -6,7 +6,17 @@ import CategoryDropdown from './CategoryDropdown';
 import SitterProfilePicture from './SitterProfilePicture';
 
 
+function convertToBase64(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+    });
+}
+
 async function post(data) {
+    console.log(data)
     try {
         const response = await api.post('/sitters', data);
         console.log('Resposta do servidor:', response.data);
@@ -16,20 +26,28 @@ async function post(data) {
 }
 
 function SitterForm() {
-
     const [selected, setSelected] = useState("Selecione a categoria");
     const { register, handleSubmit } = useForm();
-    const onSubmit = (data) => {
-        console.log(data.cpf)
-        const enderecoCompleto = `${data.endereco}, ${data.numero}, ${data.bairro}, ${data.complemento}, ${data.referencia}`;
+    const [image, setImage] = useState('');
+    const onSubmit = async (data) => {
+        const { endereco, numero, bairro, complemento, referencia, cpf, descricao } = data;
 
-        // Adicionando a string de endereço de volta aos dados
-        const dadosComEndereco = {
-            ...data,
-            enderecoCompleto: enderecoCompleto
-        };
+        const enderecoCompleto = `${endereco}, ${numero}, ${bairro}, ${complemento}, ${referencia}`;
 
-        post(dadosComEndereco)
+        let base64Image = '';
+
+        if (image instanceof File) {
+            base64Image = await convertToBase64(image);
+        }
+
+        const sla = {
+            endereco: enderecoCompleto,
+            cpf,
+            descricao,
+            image: base64Image
+        }
+
+        post(sla)
     };
 
     return (
@@ -37,7 +55,7 @@ function SitterForm() {
             <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
                 <h3 className={styles.h3}>Torne-se um cuidador</h3>
                 {/* <label>preencha os dados abaixo</label><br /> */}
-                <SitterProfilePicture />
+                <SitterProfilePicture callback={setImage} />
                 <CategoryDropdown selected={selected} setSelected={setSelected} />
 
                 <div className={styles.form_group}>

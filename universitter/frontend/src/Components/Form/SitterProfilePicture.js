@@ -1,20 +1,15 @@
-import imageProfile from "../../img/fotoPerfilCuidador.png"
+import imageProfile from "../../img/fotoPerfilCuidador.png";
 import { useRef, useState } from "react";
-import styles from './SitterProfilePicture.module.css'
+import styles from './SitterProfilePicture.module.css';
 
-
-function SitterProfilePicture() {
+function SitterProfilePicture({ callback }) {
     const inputRef = useRef(null);
     const [image, setImage] = useState("");
 
     const handleImageClick = () => {
-        inputRef.current.click()
-    }
+        inputRef.current.click();
+    };
 
-    // const handleImageChange = (event) => {
-    //     const file = event.target.files[0];
-    //     setImage(event.target.files[0]);
-    // }
     const handleImageChange = (event) => {
         const file = event.target.files[0];
         if (file) {
@@ -35,16 +30,15 @@ function SitterProfilePicture() {
                     let height = img.height;
                     if (width > height) {
                         if (width > maxSize) {
-                            height = Math.round(height *= maxSize / width);
+                            height = Math.round(height * (maxSize / width));
                             width = maxSize;
                         }
                     } else {
                         if (height > maxSize) {
-                            width = Math.round(width *= maxSize / height);
+                            width = Math.round(width * (maxSize / height));
                             height = maxSize;
                         }
                     }
-
 
                     // Set the canvas dimensions to the new size
                     canvas.width = width;
@@ -59,15 +53,18 @@ function SitterProfilePicture() {
                 };
             };
             reader.readAsDataURL(file);
+            callback(file);
+
+            // Pass the file to the callback for uploading
         }
-    }
+    };
+
     return (
         <div className={styles.picture} onClick={handleImageClick}>
-            <img className={styles.img} src={image || imageProfile}></img>
-            {/* {image ? <img src={image} alt="" /> : <img src={imageProfile} alt="" />} */}
-            <input type="file" ref={inputRef} onChange={handleImageChange} style={{ display: "none" }}></input>
+            <img className={styles.img} src={image || imageProfile} alt="Profile" />
+            <input type="file" ref={inputRef} onChange={handleImageChange} style={{ display: "none" }} />
         </div>
     );
 }
 
-export default SitterProfilePicture
+export default SitterProfilePicture;

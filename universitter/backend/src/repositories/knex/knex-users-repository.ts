@@ -1,10 +1,10 @@
-import { postgres } from '@/database'
+import { postgres } from '@/config/database'
 import { UsersRepository } from '../users-repository'
 import { Usuario } from 'postgresKnex'
 
 export class KnexUsersRepository implements UsersRepository {
-  
-  
+
+
   async findByEmail(email: string): Promise<Usuario> {
     return await postgres('usuario').where('email', email).first();
   }
