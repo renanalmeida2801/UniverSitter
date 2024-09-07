@@ -9,11 +9,12 @@ export interface SitterRepository {
     endereco: string,
     cpf: string,
     categoria: number,
+    foto: string
   ): Promise<Sitter>
   list(): Promise<Sitter[]>
   delete(id: number): Promise<Sitter>
   // deleteByGroupId(id_group: number): Promise<Sitter[]>
-  getFullSitterInfo(): Promise<UsuarioSitter[]>
+  findByUserId(id: number): Promise<Sitter>  getFullSitterInfo(): Promise<UsuarioSitter[]>
   update(
     id: number,
     user_id?: number,
@@ -22,5 +23,6 @@ export interface SitterRepository {
     rating?: number,
     endereco?: string,
     cpf?: string,
+    foto?: string
   ): Promise<Sitter>
 }

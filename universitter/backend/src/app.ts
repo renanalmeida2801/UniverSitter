@@ -12,5 +12,6 @@ app.register(cors, {
   allowedHeaders: ['Content-Type', 'Authorization'],
 })
 
+
 // app.register(authPlugin)
 app.register(appRoutes)

@@ -10,6 +10,14 @@ import { AuthContext } from '../../Context/auth';
 import { toast } from 'react-toastify'; // Import toast methods
 import { useNavigate } from 'react-router-dom';
 
+function convertToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
 
 function SitterForm() {
   const { user, setUser } = useContext(AuthContext);
@@ -31,15 +39,22 @@ function SitterForm() {
     }
   }
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const enderecoCompleto = `${data.endereco}, ${data.numero}, ${data.bairro}, ${data.complemento}, ${data.referencia}`;
+
+    let base64Image = '';
+
+    if (image instanceof File) {
+      base64Image = await convertToBase64(image);
+    }
 
     // Adicionando a string de endereço de volta aos dados
     const dadosComEndereco = {
       ...data,
       categoria: ['Somente Animais', 'Somente Plantas', 'Animais e Plantas'].indexOf(selected),
       user_id: user.user_id,
-      enderecoCompleto: enderecoCompleto
+      enderecoCompleto: enderecoCompleto,
+      image: base64Image
     };
 
     post(dadosComEndereco);

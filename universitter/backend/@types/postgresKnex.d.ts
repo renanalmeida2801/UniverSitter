@@ -21,7 +21,7 @@ export interface Sitter {
   foto: string
 }
 
-export interface UsuarioSitter extends Usuario, Sitter {}
+export interface UsuarioSitter extends Usuario, Sitter { }
 
 declare module 'knex/types/tables' {
   export interface Tables {

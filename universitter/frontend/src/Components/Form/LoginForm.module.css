@@ -1,8 +1,8 @@
 .form {
-    position: absolute;
-    width: 80%;
-    height: 70%;
-    top: 55%;
+    position: relative;
+    width: 1300px;
+    height: 650px;
+    top: 350px;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
@@ -15,7 +15,7 @@
 }
 
 .inputTextGroup {
-    width: 100%;
+    width: 1200px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -30,19 +30,21 @@
 }
 
 .h1 {
-    color: black;;
+    color: black;
+    ;
     padding: 0;
     margin: 0;
     font-size: 4rem;
 }
 
 .formHeader {
-    position: relative;
+    position: absolute;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     gap: 20px;
+    top: 40px;
 }
 
 .img {
@@ -119,6 +121,7 @@ button:hover {
 }
 
 .googleButton {
+    position: absolute;
     background-color: transparent;
     border: 1px solid var(--verde-marromenu);
     color: var(--verde-marromenu);
@@ -128,6 +131,7 @@ button:hover {
     align-items: center;
     justify-content: center;
     gap: 10px;
+    bottom: 60px;
 }
 
 /* Placeholder color for the default state */
