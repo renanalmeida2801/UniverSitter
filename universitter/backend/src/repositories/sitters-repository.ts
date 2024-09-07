@@ -14,7 +14,8 @@ export interface SitterRepository {
   list(): Promise<Sitter[]>
   delete(id: number): Promise<Sitter>
   // deleteByGroupId(id_group: number): Promise<Sitter[]>
-  findByUserId(id: number): Promise<Sitter>  getFullSitterInfo(): Promise<UsuarioSitter[]>
+  findByUserId(id: number): Promise<Sitter>
+  getFullSitterInfo(): Promise<UsuarioSitter[]>
   update(
     id: number,
     user_id?: number,

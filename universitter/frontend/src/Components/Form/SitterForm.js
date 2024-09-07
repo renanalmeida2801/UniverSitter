@@ -23,6 +23,8 @@ function SitterForm() {
   const { user, setUser } = useContext(AuthContext);
   const [selected, setSelected] = useState("Selecione a categoria");
   const { register, handleSubmit } = useForm();
+  const [image, setImage] = useState('');
+
   const navigate = useNavigate();
 
 
@@ -64,7 +66,7 @@ function SitterForm() {
     <div className={styles.container}>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         <h3 className={styles.h3}>Torne-se um cuidador</h3>
-        <SitterProfilePicture />
+        <SitterProfilePicture callback={setImage} />
         <CategoryDropdown selected={selected} setSelected={setSelected} />
 
         <div className={styles.form_group}>

@@ -2,10 +2,7 @@ import { Sitter } from '@/../@types/postgresKnex'
 import { storage } from '@/config/firebase'
 import { SitterRepository } from '@/repositories/sitters-repository'
 import { UsersRepository } from '@/repositories/users-repository'
-import { UsersRepository } from '@/repositories/users-repository'
-import { MultipartFile } from '@fastify/multipart'
 import { getDownloadURL, ref, uploadBytesResumable, uploadString } from 'firebase/storage'
-import { unknown } from 'zod'
 
 interface CreateSitterUseCaseRequest {
   user_id: number,

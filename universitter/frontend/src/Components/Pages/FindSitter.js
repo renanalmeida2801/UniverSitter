@@ -26,7 +26,7 @@ const FindSitter = () => {
   return (
     <div className={Styles.container}>
       <h1 className={Styles.h1}>Veja alguns dos nossos cuidadores!</h1>
-      <div className={Styles.sittersContainer}>
+      <div className={Styles.sittersContainer} style={{ flexWrap: "nowrap" }}>
         {data && data.map((item) => (
           <Card height="200px" width="400px" {...item} key={item.sitter_id} /> // Add a unique key for each item
         ))}
