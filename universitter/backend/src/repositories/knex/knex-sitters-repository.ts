@@ -10,7 +10,7 @@ export class KnexSittersRepository implements SitterRepository {
     rating: number,
     endereco: string,
     cpf: string,
-    foto: string
+    foto: string,
     categoria: number,
   ): Promise<Sitter> {
     return await postgres('sitter').insert({

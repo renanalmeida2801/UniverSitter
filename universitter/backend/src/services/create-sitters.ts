@@ -14,12 +14,6 @@ interface CreateSitterUseCaseRequest {
   endereco: string,
   cpf: string,
   image: string,
-  user_id: number
-  descricao: string
-  disponibilidade: boolean
-  rating: number
-  endereco: string
-  cpf: string
   categoria: number
 }
 
@@ -40,7 +34,7 @@ export class CreateSitterUseCase {
     rating,
     endereco,
     cpf,
-    image
+    image,
     categoria,
   }: CreateSitterUseCaseRequest) {
     const isRegistered = await this.sitterRepository.findByUserId(user_id)
