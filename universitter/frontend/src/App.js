@@ -8,6 +8,7 @@ import Login from './Components/Pages/Login';
 import FindSitter from './Components/Pages/FindSitter';
 import Navbar from './Components/Layout/Navbar';
 import AuthContext from './Context/auth'; // Import the context
+import './App.css';
 
 function App() {
   const { user } = useContext(AuthContext); // Use context correctly

@@ -10,6 +10,8 @@ body,
 #root {
   background-color: #E9FCCF;
   height: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 
   --verde-musgo: #28cc82;
   --cinza: #333333;
@@ -108,4 +110,4 @@ body,
   /* Scrollbar thumb color and track color */
 }
 
-/* App.css or index.css */
+/* Optional: Apply styles to other elements to match the login button's hover color */

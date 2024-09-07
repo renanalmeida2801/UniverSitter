@@ -22,12 +22,13 @@ export async function registerSitter(
   reply: FastifyReply,
 ) {
   const registerBodySchema = z.object({
-    user_id: z.number().default(randomInt(100)),
+    user_id: z.number(),
     descricao: z.string(),
     disponibilidade: z.boolean().default(true),
     rating: z.number().default(0),
     endereco: z.string(),
     cpf: z.string(),
+    image: z.string(),
     categoria: z.number(),
   })
 
@@ -41,6 +42,7 @@ export async function registerSitter(
       usersRepository,
     )
     const { sitter } = await registerUseCase.execute({
+      image: data.image,
       user_id: data.user_id,
       descricao: data.descricao,
       disponibilidade: data.disponibilidade,
@@ -55,6 +57,7 @@ export async function registerSitter(
     })
   } catch (err) {
     if (err instanceof Error) {
+      console.log(err)
       return reply.status(409).send({
         message: err.message,
       })

@@ -11,6 +11,12 @@ export interface Usuario {
   is_sitter: boolean
 }
 export interface Sitter {
+  id: number,
+  user_id: number,
+  descricao: string,
+  disponibilidade: boolean,
+  rating: number,
+  endereco: string,
   id: number
   user_id: number
   descricao: string
@@ -21,7 +27,7 @@ export interface Sitter {
   foto: string
 }
 
-export interface UsuarioSitter extends Usuario, Sitter {}
+export interface UsuarioSitter extends Usuario, Sitter { }
 
 declare module 'knex/types/tables' {
   export interface Tables {

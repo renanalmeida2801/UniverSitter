@@ -16,7 +16,18 @@ function SitterForm() {
   const [selected, setSelected] = useState("Selecione a categoria");
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
+  import { useContext } from 'react';
+  import AuthContext from '../../Context/auth';
 
+
+  function convertToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
 
   async function post(data) {
     try {
@@ -31,61 +42,88 @@ function SitterForm() {
     }
   }
 
-  const onSubmit = (data) => {
-    const enderecoCompleto = `${data.endereco}, ${data.numero}, ${data.bairro}, ${data.complemento}, ${data.referencia}`;
+  function SitterForm() {
+    const [selected, setSelected] = useState("Selecione a categoria");
+    const { register, handleSubmit } = useForm();
+    const [image, setImage] = useState('');
+    const { user } = useContext(AuthContext);
+    const onSubmit = async (data) => {
+      const { endereco, numero, bairro, complemento, referencia, cpf, descricao } = data;
 
-    // Adicionando a string de endereço de volta aos dados
-    const dadosComEndereco = {
-      ...data,
-      categoria: ['Somente Animais', 'Somente Plantas', 'Animais e Plantas'].indexOf(selected),
-      user_id: user.user_id,
-      enderecoCompleto: enderecoCompleto
+      const enderecoCompleto = `${endereco}, ${numero}, ${bairro}, ${complemento}, ${referencia}`;
+
+      let base64Image = '';
+
+      if (image instanceof File) {
+        base64Image = await convertToBase64(image);
+      }
+
+      const dados = {
+        user_id: user.user_id,
+        endereco: enderecoCompleto,
+        cpf,
+        descricao,
+        image: base64Image
+      }
+
+      post(dados)
+    };
+    const onSubmit = (data) => {
+      const enderecoCompleto = `${data.endereco}, ${data.numero}, ${data.bairro}, ${data.complemento}, ${data.referencia}`;
+
+      // Adicionando a string de endereço de volta aos dados
+      const dadosComEndereco = {
+        ...data,
+        categoria: ['Somente Animais', 'Somente Plantas', 'Animais e Plantas'].indexOf(selected),
+        user_id: user.user_id,
+        enderecoCompleto: enderecoCompleto
+      };
+
+      post(dadosComEndereco);
     };
 
-    post(dadosComEndereco);
-  };
+    return (
+      <div className={styles.container}>
+        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+          <h3 className={styles.h3}>Torne-se um cuidador</h3>
+          {/* <label>preencha os dados abaixo</label><br /> */}
+          <SitterProfilePicture callback={setImage} />
+          <CategoryDropdown selected={selected} setSelected={setSelected} />
 
-  return (
-    <div className={styles.container}>
-      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-        <h3 className={styles.h3}>Torne-se um cuidador</h3>
-        <SitterProfilePicture />
-        <CategoryDropdown selected={selected} setSelected={setSelected} />
+          <div className={styles.form_group}>
+            <input type='text' {...register("cpf")} className={styles.cpf} placeholder='CPF' />
+          </div>
 
-        <div className={styles.form_group}>
-          <input type='text' {...register("cpf")} className={styles.cpf} placeholder='CPF' />
-        </div>
+          <div className={styles.form_group}>
+            <input type='text' {...register("descricao")} className={styles.descricao} placeholder='Descrição' />
+          </div>
 
-        <div className={styles.form_group}>
-          <input type='text' {...register("descricao")} className={styles.descricao} placeholder='Descrição' />
-        </div>
+          <div className={styles.form_group}>
+            <input type='text' {...register("endereco")} className={styles.endereco} placeholder='Endereço' />
+          </div>
 
-        <div className={styles.form_group}>
-          <input type='text' {...register("endereco")} className={styles.endereco} placeholder='Endereço' />
-        </div>
+          <div className={styles.form_group}>
+            <input type='number' {...register("numero")} className={styles.number} placeholder='N°' />
+          </div>
 
-        <div className={styles.form_group}>
-          <input type='number' {...register("numero")} className={styles.number} placeholder='N°' />
-        </div>
+          <div className={styles.form_group}>
+            <input type='text' {...register("bairro")} className={styles.bairro} placeholder='Bairro' />
+          </div>
 
-        <div className={styles.form_group}>
-          <input type='text' {...register("bairro")} className={styles.bairro} placeholder='Bairro' />
-        </div>
+          <div className={styles.form_group}>
+            <input type='text' {...register("complemento")} className={styles.complemento} placeholder='Complemento' />
+          </div>
 
-        <div className={styles.form_group}>
-          <input type='text' {...register("complemento")} className={styles.complemento} placeholder='Complemento' />
-        </div>
+          <div className={styles.form_group}>
+            <input type='text' {...register("referencia")} className={styles.referencia} placeholder='Referência (opicional)' />
+          </div>
 
-        <div className={styles.form_group}>
-          <input type='text' {...register("referencia")} className={styles.referencia} placeholder='Referência (opicional)' />
-        </div>
+          <div className={styles.form_group}>
+            <button type='Submit' className={styles.button}>Tornar-se cuidador</button>
+          </div>
+        </form>
+      </div>
+    );
+  }
 
-        <div className={styles.form_group}>
-          <button type='Submit' className={styles.button}>Tornar-se cuidador</button>
-        </div>
-      </form>
-    </div>
-  );
-}
-
-export default SitterForm;
+  export default SitterForm;
