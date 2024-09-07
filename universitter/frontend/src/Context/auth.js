@@ -5,12 +5,11 @@ export const AuthContext = createContext({
   user: null,
   signin: () => Promise.resolve(),
   logout: () => { },
-  existEmail: false
+  setLogout: () => { }
 });
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [existEmail, setExistEmail] = useState(false);
 
   useEffect(() => {
     const userToken = localStorage.getItem("user_token");
@@ -26,7 +25,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const response = await api.post('/login', { email, password: senha });
       const token = response.data.token;
-      const userData = response.data.user; // Adjust according to your API response
+      const userData = response.data.user;
 
       if (token) {
         localStorage.setItem("user_token", JSON.stringify({ email, token }));
@@ -53,7 +52,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, signin, logout, existEmail }}>
+    <AuthContext.Provider value={{ user, signin, logout, setUser }}>
       {children}
     </AuthContext.Provider>
   );

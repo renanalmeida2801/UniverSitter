@@ -2,9 +2,7 @@ import { Sitter } from '@/../@types/postgresKnex'
 import { storage } from '@/config/firebase'
 import { SitterRepository } from '@/repositories/sitters-repository'
 import { UsersRepository } from '@/repositories/users-repository'
-import { MultipartFile } from '@fastify/multipart'
 import { getDownloadURL, ref, uploadBytesResumable, uploadString } from 'firebase/storage'
-import { unknown } from 'zod'
 
 interface CreateSitterUseCaseRequest {
   user_id: number,
@@ -14,6 +12,7 @@ interface CreateSitterUseCaseRequest {
   endereco: string,
   cpf: string,
   image: string,
+  categoria: number
 }
 
 interface CreateSitterUseCaseResponse {
@@ -21,7 +20,10 @@ interface CreateSitterUseCaseResponse {
 }
 
 export class CreateSitterUseCase {
-  constructor(private readonly sitterRepository: SitterRepository) { }
+  constructor(
+    private readonly sitterRepository: SitterRepository,
+    private readonly usersRepository: UsersRepository,
+  ) { }
 
   async execute({
     user_id,
@@ -30,6 +32,7 @@ export class CreateSitterUseCase {
     rating,
     endereco,
     cpf,
+    categoria,
     image
   }: CreateSitterUseCaseRequest) {
     const isRegistered = await this.sitterRepository.findByUserId(user_id)
@@ -48,10 +51,16 @@ export class CreateSitterUseCase {
       rating,
       endereco,
       cpf,
+      categoria,
       url
     )
-    return (
-      { sitter }
-    )
+
+    if (sitter) {
+      await this.usersRepository.changeSitterStatus(user_id, true)
+    }
+
+    return {
+      sitter,
+    }
   }
 }

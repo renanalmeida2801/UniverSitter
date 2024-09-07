@@ -1,4 +1,4 @@
-import { Sitter } from '@/../@types/postgresKnex'
+import { Sitter, UsuarioSitter } from '@/../@types/postgresKnex'
 
 export interface SitterRepository {
   create(
@@ -8,12 +8,14 @@ export interface SitterRepository {
     rating: number,
     endereco: string,
     cpf: string,
+    categoria: number,
     foto: string
   ): Promise<Sitter>
   list(): Promise<Sitter[]>
   delete(id: number): Promise<Sitter>
   // deleteByGroupId(id_group: number): Promise<Sitter[]>
   findByUserId(id: number): Promise<Sitter>
+  getFullSitterInfo(): Promise<UsuarioSitter[]>
   update(
     id: number,
     user_id?: number,

@@ -1,32 +1,38 @@
-import { useState, useEffect, useCallback } from "react"
-import api from "../../services/api.ts"
+import { useState, useEffect } from "react";
+import api from "../../services/api.ts";
+import Card from "../Layout/Card.js";
 
-import Styles from './FindSitter.module.css'
+import Styles from './FindSitter.module.css';
 
 const FindSitter = () => {
-    const [data, setData] = useState([
-        {
-            name: "Luigy",
-            starLevel: 5,
-            sitterType: ["Pet", "Plant"],
-            desc: "A lovely mother fucker"
-        }
-    ])
+  const [data, setData] = useState([]);
 
-    // useCallback(async () => {
-    //   api.get('/sitters').then(
-    //     setData(data)
-    //   )
-    // })
+  const loadData = async () => {
+    try {
+      const response = await api.get('/sittersComplete');
+      setData(response.data.sitters)
+      console.log(response.data.sitters)
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
 
-    return (
-        <div className={Styles.container}>
-            <h1>Veja alguns dos nossos cuidadores!</h1>
-            <div className={Styles.sittersContainer}>
-            </div>
-        </div>
-    )
-}
+  useEffect(() => {
+    loadData();
+  }, []);
 
+  console.log(data)
 
-export default FindSitter
+  return (
+    <div className={Styles.container}>
+      <h1 className={Styles.h1}>Veja alguns dos nossos cuidadores!</h1>
+      <div className={Styles.sittersContainer} style={{ flexWrap: "nowrap" }}>
+        {data && data.map((item) => (
+          <Card height="200px" width="400px" {...item} key={item.sitter_id} /> // Add a unique key for each item
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default FindSitter;

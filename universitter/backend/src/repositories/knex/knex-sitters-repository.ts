@@ -1,6 +1,6 @@
 import { postgres } from '@/config/database'
 import { SitterRepository } from '../sitters-repository'
-import { Sitter } from 'postgresKnex'
+import { Sitter, UsuarioSitter } from 'postgresKnex'
 
 export class KnexSittersRepository implements SitterRepository {
   async create(
@@ -10,6 +10,7 @@ export class KnexSittersRepository implements SitterRepository {
     rating: number,
     endereco: string,
     cpf: string,
+    categoria: number,
     foto: string
   ): Promise<Sitter> {
     return await postgres('sitter').insert({
@@ -20,6 +21,7 @@ export class KnexSittersRepository implements SitterRepository {
       endereco,
       cpf,
       foto,
+      categoria,
     })
   }
 
@@ -50,6 +52,29 @@ export class KnexSittersRepository implements SitterRepository {
     return sitters
   }
 
+  async getFullSitterInfo(): Promise<UsuarioSitter[]> {
+    const sitters = await postgres('sitter')
+      .leftJoin('usuario', 'sitter.user_id', 'usuario.user_id')
+      .select(
+        'sitter.sitter_id',
+        'sitter.user_id',
+        'sitter.descricao',
+        'sitter.disponibilidade',
+        'sitter.rating',
+        'sitter.endereco',
+        'sitter.cpf',
+        'sitter.foto',
+        'sitter.categoria',
+        'usuario.nome',
+        'usuario.sobrenome',
+        'usuario.email',
+        'usuario.senha',
+        'usuario.telefone',
+      )
+
+    return sitters
+  }
+
   // TODO: Fix this after make groups.
   async findByGroup(id_group: number): Promise<Sitter[]> {
     const sitters = await postgres('sitter').where('ID_GRUPO', id_group)
@@ -66,7 +91,6 @@ export class KnexSittersRepository implements SitterRepository {
 
     return sitter
   }
-
 
   async list(): Promise<Sitter[]> {
     return await postgres('sitter')

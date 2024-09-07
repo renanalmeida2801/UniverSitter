@@ -6,6 +6,8 @@ import styles from './Navbar.module.css'; // Ensure correct path
 function Navbar() {
   const { user, logout } = useContext(AuthContext);
 
+  console.log(user)
+
   return (
     <nav className={styles.navbar}>
       <ul className={styles.list}>
@@ -27,14 +29,16 @@ function Navbar() {
                 Procurar Cuidador
               </NavLink>
             </li>
-            <li className={styles.item}>
-              <NavLink
-                to="/sitter-register"
-                className={({ isActive }) => isActive ? `${styles.link} ${styles.active}` : styles.link}
-              >
-                Quero ser Cuidador
-              </NavLink>
-            </li>
+            {!user.is_sitter && (
+              <li className={styles.item}>
+                <NavLink
+                  to="/sitter-register"
+                  className={({ isActive }) => isActive ? `${styles.link} ${styles.active}` : styles.link}
+                >
+                  Quero ser Cuidador
+                </NavLink>
+              </li>
+            )}
             <li className={styles.item}>
               <NavLink
                 to="/help"

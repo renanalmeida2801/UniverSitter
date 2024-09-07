@@ -1,6 +1,6 @@
 import { FastifyRequest, FastifyReply } from 'fastify'
 import { KnexSittersRepository } from '@/repositories/knex/knex-sitters-repository'
-import { ListSittersUseCase } from '@/services/list-sitters'
+import { ListCompleteSitterUseCase } from '@/services/list-complete-sitters'
 
 /**
  * List Users
@@ -10,13 +10,16 @@ import { ListSittersUseCase } from '@/services/list-sitters'
  * @example GET localhost:3000/Users?query=string
  */
 
-export async function listSitter(request: FastifyRequest, reply: FastifyReply) {
+export async function listCompleteSitter(
+  request: FastifyRequest,
+  reply: FastifyReply,
+) {
   const sittersRepository = new KnexSittersRepository()
-  const listUseCase = new ListSittersUseCase(sittersRepository)
-  const { sitter } = await listUseCase.execute()
+  const listCompleteSitters = new ListCompleteSitterUseCase(sittersRepository)
+  const { sitter } = await listCompleteSitters.execute()
 
   return reply.status(201).send({
     message: `Sitters successfully listed!`,
-    data: sitter,
+    sitters: sitter,
   })
 }
