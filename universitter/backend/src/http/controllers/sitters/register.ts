@@ -54,6 +54,7 @@ export async function registerSitter(
       data: sitter,
     })
   } catch (err) {
+    console.log(err)
     if (err instanceof Error) {
       return reply.status(409).send({
         message: err.message,
