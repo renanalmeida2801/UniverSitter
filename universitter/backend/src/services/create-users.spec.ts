@@ -23,7 +23,7 @@
 
 //     console.log(item)
 
-//     expect(item.ID).toBe(1)
+//     expect(item.user_id).toBe(1)
 //   })
 //   it('should be able to create more than one item', async () => {
 //     await itemsRepository.create(1, 'Test', 'Test', 1, new Date())
@@ -36,6 +36,6 @@
 //       DT_REFERENCIA: new Date(),
 //     })
 
-//     expect(item.ID).toBe(2)
+//     expect(item.user_id).toBe(2)
 //   })
 // })

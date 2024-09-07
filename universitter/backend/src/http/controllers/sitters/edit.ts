@@ -19,7 +19,7 @@ import { EditSitterUseCase } from '@/services/edit-sitters'
 export async function editSitter(request: FastifyRequest, reply: FastifyReply) {
   const registerBodySchema = z.object({
     id: z.number(),
-    id_user: z.number().optional(),
+    user_id: z.number().optional(),
     descricao: z.string().optional(),
     disponibilidade: z.boolean().optional(),
     rating: z.number().optional(),
@@ -33,7 +33,7 @@ export async function editSitter(request: FastifyRequest, reply: FastifyReply) {
     const editUseCase = new EditSitterUseCase(sittersRepository)
     const { sitter } = await editUseCase.execute({
       id: data.id,
-      id_user: data.id_user,
+      user_id: data.user_id,
       descricao: data.descricao,
       disponibilidade: data.disponibilidade,
       rating: data.rating,

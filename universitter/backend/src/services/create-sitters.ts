@@ -1,13 +1,15 @@
 import { Sitter } from '@/../@types/postgresKnex'
 import { SitterRepository } from '@/repositories/sitters-repository'
+import { UsersRepository } from '@/repositories/users-repository'
 
 interface CreateSitterUseCaseRequest {
-    id_user: number,
-    descricao: string,
-    disponibilidade: boolean,
-    rating: number,
-    endereco: string,
-    cpf: string,
+  user_id: number
+  descricao: string
+  disponibilidade: boolean
+  rating: number
+  endereco: string
+  cpf: string
+  categoria: number
 }
 
 interface CreateSitterUseCaseResponse {
@@ -15,24 +17,33 @@ interface CreateSitterUseCaseResponse {
 }
 
 export class CreateSitterUseCase {
-  constructor(private readonly sitterRepository: SitterRepository) {}
+  constructor(
+    private readonly sitterRepository: SitterRepository,
+    private readonly usersRepository: UsersRepository,
+  ) {}
 
   async execute({
-    id_user,
+    user_id,
     descricao,
     disponibilidade,
     rating,
     endereco,
     cpf,
+    categoria,
   }: CreateSitterUseCaseRequest): Promise<CreateSitterUseCaseResponse> {
     const sitter = await this.sitterRepository.create(
-      id_user,
+      user_id,
       descricao,
       disponibilidade,
       rating,
       endereco,
       cpf,
+      categoria,
     )
+
+    if (sitter) {
+      await this.usersRepository.changeSitterStatus(user_id, true)
+    }
 
     return {
       sitter,

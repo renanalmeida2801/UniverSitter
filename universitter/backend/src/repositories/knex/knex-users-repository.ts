@@ -3,12 +3,9 @@ import { UsersRepository } from '../users-repository'
 import { Usuario } from 'postgresKnex'
 
 export class KnexUsersRepository implements UsersRepository {
-  
-  
   async findByEmail(email: string): Promise<Usuario> {
-    return await postgres('usuario').where('email', email).first();
+    return await postgres('usuario').where('email', email).first()
   }
-
 
   async create(
     nome: string,
@@ -32,25 +29,25 @@ export class KnexUsersRepository implements UsersRepository {
 
     if (!user) throw new Error("User doesn't exist")
 
-    await postgres('usuario').where('ID', user?.id).del()
+    await postgres('usuario').where('user_id', user?.id).del()
 
     return user
   }
 
   // TODO: Fix this after make groups.
   async deleteByGroupId(id_group: number): Promise<Usuario[]> {
-    const users = await postgres('usuario').where('ID_GRUPO', id_group)
+    const users = await postgres('usuario').where('user_id_GRUPO', id_group)
 
     if (!users) return []
 
-    await postgres('usuario').where('ID_GRUPO', id_group).del()
+    await postgres('usuario').where('user_id_GRUPO', id_group).del()
 
     return users
   }
 
   // TODO: Fix this after make groups.
   async findByGroup(id_group: number): Promise<Usuario[]> {
-    const users = await postgres('usuario').where('ID_GRUPO', id_group)
+    const users = await postgres('usuario').where('user_id_GRUPO', id_group)
 
     if (!users) throw new Error("Group doesn't exist")
 
@@ -58,7 +55,7 @@ export class KnexUsersRepository implements UsersRepository {
   }
 
   async findById(id: number): Promise<Usuario> {
-    const user = await postgres('usuario').where('ID', id).first()
+    const user = await postgres('usuario').where('user_id', id).first()
 
     if (!user) throw new Error("User doesn't exist")
 
@@ -88,17 +85,25 @@ export class KnexUsersRepository implements UsersRepository {
     senha?: string,
     telefone?: string,
   ): Promise<Usuario> {
-    const user = await postgres('usuario').where('ID', id).first()
+    const user = await postgres('usuario').where('user_id', id).first()
 
     if (!user) throw new Error("User doesn't exist")
 
-    return await postgres('usuario').where('ID', id).update({
+    return await postgres('usuario').where('user_id', id).update({
       id_grupo: id_group,
       nome,
       sobrenome,
       email,
       senha,
       telefone,
+    })
+  }
+
+  async changeSitterStatus(id: number, is_sitter: boolean): Promise<Usuario> {
+    const user = await postgres('usuario').where('user_id', id).first()
+    if (!user) throw new Error("User doesn't exist")
+    return await postgres('usuario').where('user_id', id).update({
+      is_sitter,
     })
   }
 }

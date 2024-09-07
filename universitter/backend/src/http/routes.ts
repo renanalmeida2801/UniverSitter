@@ -9,6 +9,7 @@ import { registerSitter } from './controllers/sitters/register'
 import { listSitter } from './controllers/sitters/list'
 import { deleteSitter } from './controllers/sitters/delete'
 import { editSitter } from './controllers/sitters/edit'
+import { listCompleteSitter } from './controllers/sitters/listCompleteSitter'
 import { authMiddleware } from '@/middleware/authenticate'
 
 import { login } from './controllers/auth/login'
@@ -19,12 +20,12 @@ export async function appRoutes(app: FastifyInstance) {
   app.post('/userRegister', registerUser)
 
   app.addHook('onRequest', async (request, reply) => {
-    const publicRoutes = ['/login', '/test', '/userRegister']; // Rotas que não precisam de autenticação
+    const publicRoutes = ['/login', '/test', '/userRegister'] // Rotas que não precisam de autenticação
     if (!publicRoutes.includes(request.routerPath)) {
-      await authMiddleware(request, reply);
+      await authMiddleware(request, reply)
     }
-  });
-  
+  })
+
   // Users
 
   app.put('/users', editUser) // All values are optional, just edit sent what you want
@@ -36,5 +37,5 @@ export async function appRoutes(app: FastifyInstance) {
   app.get('/sitters', listSitter)
   app.put('/sitters', editSitter) // All values are optional, just edit sent what you want
   app.delete('/sitters', deleteSitter)
+  app.get('/sittersComplete', listCompleteSitter)
 }
-

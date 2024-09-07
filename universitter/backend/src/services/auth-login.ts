@@ -16,7 +16,7 @@ interface LoginResponse {
   token: string
 }
 export class AuthLogin {
-  constructor(private readonly usersRepository: UsersRepository) { }
+  constructor(private readonly usersRepository: UsersRepository) {}
 
   async login({ email, password }: LoginRequest): Promise<LoginResponse> {
     const user = await this.usersRepository.findByEmail(email)
@@ -32,4 +32,3 @@ export class AuthLogin {
     return { user, token }
   }
 }
-

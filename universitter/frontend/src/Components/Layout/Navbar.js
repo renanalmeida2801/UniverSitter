@@ -27,14 +27,16 @@ function Navbar() {
                 Procurar Cuidador
               </NavLink>
             </li>
-            <li className={styles.item}>
-              <NavLink
-                to="/sitter-register"
-                className={({ isActive }) => isActive ? `${styles.link} ${styles.active}` : styles.link}
-              >
-                Quero ser Cuidador
-              </NavLink>
-            </li>
+            {!user.is_sitter && (
+              <li className={styles.item}>
+                <NavLink
+                  to="/sitter-register"
+                  className={({ isActive }) => isActive ? `${styles.link} ${styles.active}` : styles.link}
+                >
+                  Quero ser Cuidador
+                </NavLink>
+              </li>
+            )}
             <li className={styles.item}>
               <NavLink
                 to="/help"

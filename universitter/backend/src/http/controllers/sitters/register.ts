@@ -3,6 +3,7 @@ import { FastifyRequest, FastifyReply } from 'fastify'
 import { CreateSitterUseCase } from '@/services/create-sitters'
 import { KnexSittersRepository } from '@/repositories/knex/knex-sitters-repository'
 import { randomInt } from 'crypto'
+import { KnexUsersRepository } from '@/repositories/knex/knex-users-repository'
 
 /**
  * Register a new User
@@ -16,28 +17,37 @@ import { randomInt } from 'crypto'
  * @example {"id_grupo":1,"nome":"string","sobrenome":"string","email":"string","senha":"string","telefone":"string"}
  * @example POST localhost:3000/Users
  */
-export async function registerSitter(request: FastifyRequest, reply: FastifyReply) {
+export async function registerSitter(
+  request: FastifyRequest,
+  reply: FastifyReply,
+) {
   const registerBodySchema = z.object({
-    id_user: z.number().default(randomInt(100)),
+    user_id: z.number().default(randomInt(100)),
     descricao: z.string(),
     disponibilidade: z.boolean().default(true),
     rating: z.number().default(0),
     endereco: z.string(),
     cpf: z.string(),
+    categoria: z.number(),
   })
 
   const data = registerBodySchema.parse(request.body)
 
   try {
     const sittersRepository = new KnexSittersRepository()
-    const registerUseCase = new CreateSitterUseCase(sittersRepository)
+    const usersRepository = new KnexUsersRepository()
+    const registerUseCase = new CreateSitterUseCase(
+      sittersRepository,
+      usersRepository,
+    )
     const { sitter } = await registerUseCase.execute({
-      id_user: data.id_user,
+      user_id: data.user_id,
       descricao: data.descricao,
       disponibilidade: data.disponibilidade,
       rating: data.rating,
       endereco: data.endereco,
       cpf: data.cpf,
+      categoria: data.categoria,
     })
     return reply.status(201).send({
       message: `Sitter ${data.cpf} successfully registered!`,

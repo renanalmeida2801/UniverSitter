@@ -8,21 +8,28 @@ import SitterProfilePicture from './SitterProfilePicture';
 import { useContext } from 'react';
 import { AuthContext } from '../../Context/auth';
 import { toast } from 'react-toastify'; // Import toast methods
+import { useNavigate } from 'react-router-dom';
 
-async function post(data) {
-  try {
-    const response = await api.post('/sitters', data);
-    toast.success('Dados enviados com sucesso!'); // Show success toast
-  } catch (error) {
-    toast.error('Erro ao enviar dados. Tente novamente.'); // Show error toast
-    console.error('Erro ao enviar dados:', error);
-  }
-}
 
 function SitterForm() {
-  const { user } = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext);
   const [selected, setSelected] = useState("Selecione a categoria");
   const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
+
+
+  async function post(data) {
+    try {
+      const response = await api.post('/sitters', data);
+      toast.success('Dados enviados com sucesso!'); // Show success toast
+      setUser({ ...user, is_sitter: true }); // Update user context
+      navigate('/'); // Navigate to home page
+
+    } catch (error) {
+      toast.error('Erro ao enviar dados. Tente novamente.'); // Show error toast
+      console.error('Erro ao enviar dados:', error);
+    }
+  }
 
   const onSubmit = (data) => {
     const enderecoCompleto = `${data.endereco}, ${data.numero}, ${data.bairro}, ${data.complemento}, ${data.referencia}`;
@@ -30,6 +37,7 @@ function SitterForm() {
     // Adicionando a string de endereço de volta aos dados
     const dadosComEndereco = {
       ...data,
+      categoria: ['Somente Animais', 'Somente Plantas', 'Animais e Plantas'].indexOf(selected),
       user_id: user.user_id,
       enderecoCompleto: enderecoCompleto
     };

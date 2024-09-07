@@ -24,15 +24,15 @@ const Card = (props) => {
   return (
     <div style={{ height: props.height }} className={styles.cardContainer}>
       <div className={styles.imageContainer}>
-        <img src={props.img} />
+        <img src={props.foto} />
         <StarRating color='gold' width={100} starSize={15} rating={props.rating} />
       </div>
       <div className={styles.infoContainer}>
         <div className={styles.infoHeader}>
-          <span>{props.name}</span>
+          <span>{props.nome}</span>
           <div className={styles.categoryContainer}>
             {
-              icons[props.category]
+              icons[props.categoria]
             }
           </div>
         </div>

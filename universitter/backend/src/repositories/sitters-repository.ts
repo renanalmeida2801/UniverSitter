@@ -1,25 +1,26 @@
-import { Sitter } from '@/../@types/postgresKnex'
+import { Sitter, UsuarioSitter } from '@/../@types/postgresKnex'
 
 export interface SitterRepository {
   create(
-    id_user: number,
+    user_id: number,
     descricao: string,
     disponibilidade: boolean,
     rating: number,
     endereco: string,
     cpf: string,
+    categoria: number,
   ): Promise<Sitter>
   list(): Promise<Sitter[]>
   delete(id: number): Promise<Sitter>
   // deleteByGroupId(id_group: number): Promise<Sitter[]>
-
+  getFullSitterInfo(): Promise<UsuarioSitter[]>
   update(
     id: number,
-    id_user?: number,
+    user_id?: number,
     descricao?: string,
     disponibilidade?: boolean,
     rating?: number,
     endereco?: string,
-    cpf?: string
+    cpf?: string,
   ): Promise<Sitter>
 }
