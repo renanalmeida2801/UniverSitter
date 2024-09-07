@@ -6,6 +6,8 @@ import styles from './Navbar.module.css'; // Ensure correct path
 function Navbar() {
   const { user, logout } = useContext(AuthContext);
 
+  console.log(user)
+
   return (
     <nav className={styles.navbar}>
       <ul className={styles.list}>

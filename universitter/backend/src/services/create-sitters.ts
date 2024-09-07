@@ -24,7 +24,6 @@ export class CreateSitterUseCase {
     private readonly sitterRepository: SitterRepository,
     private readonly usersRepository: UsersRepository,
   ) { }
-  ) { }
 
   async execute({
     user_id,
@@ -36,36 +35,32 @@ export class CreateSitterUseCase {
     categoria,
     image
   }: CreateSitterUseCaseRequest) {
-  const isRegistered = await this.sitterRepository.findByUserId(user_id)
+    const isRegistered = await this.sitterRepository.findByUserId(user_id)
 
-  if (isRegistered)
-    throw new Error("Usuário registrado")
+    if (isRegistered)
+      throw new Error("Usuário registrado")
 
-  const storageRef = ref(storage, `image/${user_id}.png`)
-  await uploadString(storageRef, image, 'data_url');
-  const url = await getDownloadURL(storageRef);
+    const storageRef = ref(storage, `image/${user_id}.png`)
+    await uploadString(storageRef, image, 'data_url');
+    const url = await getDownloadURL(storageRef);
 
-  const sitter = await this.sitterRepository.create(
-    user_id,
-    descricao,
-    disponibilidade,
-    rating,
-    endereco,
-    cpf,
-    categoria,
-    categoria,
-    url
-  )
-  return (
-    { sitter }
-  )
+    const sitter = await this.sitterRepository.create(
+      user_id,
+      descricao,
+      disponibilidade,
+      rating,
+      endereco,
+      cpf,
+      categoria,
+      url
+    )
 
-  if (sitter) {
-    await this.usersRepository.changeSitterStatus(user_id, true)
+    if (sitter) {
+      await this.usersRepository.changeSitterStatus(user_id, true)
+    }
+
+    return {
+      sitter,
+    }
   }
-
-  return {
-    sitter,
-  }
-}
 }
