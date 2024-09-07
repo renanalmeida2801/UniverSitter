@@ -1,16 +1,21 @@
-
+// import api from '../../services/api';
 import styles from './InfoSitter.module.css'
-import Sitter from '../Layout/Sitter';
-import SitterDescription from '../Layout/SitterDescription';
-import SitterReviews from '../Layout/SitterReviews';
+import Sitter from '../Layout/info-sitter/Sitter';
+import SitterDescription from '../Layout/info-sitter/SitterDescription';
+import SitterReviews from '../Layout/info-sitter/SitterReviews';
+
+const getSitter = (id) => {
+    // const sitter = api.get('/sitter/:id', id)
+}
+
+function InfoSitter() {
 
 
-function InfoSitter(){
-    return(
+    return (
         <div>
-            <Sitter/>
-            <SitterDescription/>
-            <SitterReviews/>
+            <Sitter />
+            <SitterDescription />
+            <SitterReviews />
         </div>
     )
 }

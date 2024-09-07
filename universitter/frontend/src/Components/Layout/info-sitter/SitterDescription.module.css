@@ -1,0 +1,18 @@
+.container {
+    position: relative;
+}
+
+.container h1 {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    margin-left: 60px;
+}
+
+.container p {
+    font-size: 20px;
+    margin-left: 60px;
+    flex-wrap: nowrap;
+    width: 80%;
+    min-height: 40px;
+}

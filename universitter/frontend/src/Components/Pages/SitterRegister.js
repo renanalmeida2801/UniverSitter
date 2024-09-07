@@ -2,10 +2,10 @@ import SitterForm from "../Form/SitterForm";
 
 import styles from './SitterRegister.module.css'
 
-function SitterRegister(){
-    return(
+function SitterRegister() {
+    return (
         <div className={styles.body}>
-            <SitterForm/>
+            <SitterForm />
         </div>
     );
 }
