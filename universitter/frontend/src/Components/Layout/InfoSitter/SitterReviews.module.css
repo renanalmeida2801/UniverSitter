@@ -1,60 +1,61 @@
 .container {
-    color: var(--verde-marromenu);
-    padding: 10px 2vw;
-    width: 100%;
-    font-size: 18pt;
+  color: var(--verde-marromenu);
+  padding: 10px 2vw;
+  width: 100%;
+  font-size: 18pt;
 }
 
 .review {
-    display: grid;
-    grid-template-columns: 0.25fr 1fr 0.5fr;
-    background-color: var(--branco-craro);
-    padding: 10px;
-    border-radius: 0 0 15px 15px;
+  display: grid;
+  grid-template-columns: 0.25fr 1fr 0.5fr;
+  background-color: var(--branco-craro);
+  padding: 10px;
+  border-radius: 0 0 15px 15px;
 }
 
 .review h3 {
-    grid-column: 2 / span 1;
-    grid-row: 2;
-    /* Ocupa a primeira linha */
-    padding-bottom: 1vw;
-    color: var(--verde-marromenu);
-    font-size: 18pt;
-    margin-left: 15px;
-    /* Ajusta o margin para alinhar corretamente na grid */
+  grid-column: 2 / span 1;
+  grid-row: 2;
+  /* Ocupa a primeira linha */
+  padding-bottom: 1vw;
+  color: var(--verde-marromenu);
+  font-size: 18pt;
+  margin-left: 15px;
+  /* Ajusta o margin para alinhar corretamente na grid */
 }
 
 .review img {
-    margin: 1vw;
-    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
-    width: 90%;
-    height: 90%;
-    border-radius: 5px 20px 5px 20px;
-    border: 2px solid var(--verde-craro);
-    background-color: var(--branco-craro);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
-
+  margin: 1vw;
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  width: 90%;
+  height: 90%;
+  border-radius: 5px 20px 5px 20px;
+  border: 2px solid var(--verde-craro);
+  background-color: var(--branco-craro);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  max-height: 250px;
 }
 
 .review h1 {
-    color: var(--verde-marromenu);
-    font-size: 30pt;
-    margin-top: 2vw;
-    margin-left: 1vw;
+  color: var(--verde-marromenu);
+  font-size: 30pt;
+  margin-top: 2vw;
+  margin-left: 1vw;
 }
 
 .review p {
-    color: var(--verde-marromenu);
-    font-size: 30pt;
-    margin-top: 2vw;
-    margin-left: 40%;
+  color: var(--verde-marromenu);
+  font-size: 30pt;
+  margin-top: 2vw;
+  margin-left: 40%;
 
 }
 
 .star {
-    margin-left: 1vw;
+  margin-bottom: 1vw;
+  margin-left: 1vw;
 }
