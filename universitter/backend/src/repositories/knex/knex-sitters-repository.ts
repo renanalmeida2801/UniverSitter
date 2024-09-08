@@ -11,7 +11,7 @@ export class KnexSittersRepository implements SitterRepository {
     endereco: string,
     cpf: string,
     categoria: number,
-    foto: string
+    foto: string,
   ): Promise<Sitter> {
     return await postgres('sitter').insert({
       user_id,
@@ -37,9 +37,8 @@ export class KnexSittersRepository implements SitterRepository {
   }
 
   async findByUserId(id: number): Promise<Sitter> {
-    return await postgres('sitter').where('user_id', id).first();
+    return await postgres('sitter').where('user_id', id).first()
   }
-
 
   // TODO: Fix this after make groups.
   async deleteByGroupId(id_group: number): Promise<Sitter[]> {
@@ -86,8 +85,8 @@ export class KnexSittersRepository implements SitterRepository {
 
   async findById(id: number): Promise<Sitter> {
     const sitter = await postgres('sitter')
-      .where('sitter_id', id)
       .leftJoin('usuario', 'sitter.user_id', 'usuario.user_id')
+      .where('sitter_id', id)
       .first()
 
     if (!sitter) throw new Error("Sitter doesn't exist")

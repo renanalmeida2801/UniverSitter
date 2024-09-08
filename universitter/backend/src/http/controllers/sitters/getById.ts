@@ -10,14 +10,18 @@ import { GetSitterByIdUseCase } from '@/services/get-sitter-by-id'
  * @example GET localhost:3000/sitters/:id
  */
 
-export async function getSitterById(request: FastifyRequest, reply: FastifyReply) {
+export async function getSitterById(
+  request: FastifyRequest,
+  reply: FastifyReply,
+) {
   const paramsSchema = z.object({
     id: z.string(),
   })
+
   const data = paramsSchema.parse(request.params)
   const sittersRepository = new KnexSittersRepository()
   const getSitterByIdUseCase = new GetSitterByIdUseCase(sittersRepository)
-  const { sitter } = await getSitterByIdUseCase.execute(Number(data.id));
+  const { sitter } = await getSitterByIdUseCase.execute(Number(data.id))
 
   return reply.status(200).send({
     data: sitter,
