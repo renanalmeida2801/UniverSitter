@@ -7,33 +7,34 @@ import { useState, useEffect, useRef } from "react";
 import api from "../../services/api.ts";
 
 
+
 function InfoSitter() {
-    const params = useParams()
-    const [data, setData] = useState({});
+  const params = useParams()
+  const [data, setData] = useState({});
 
-    const loadSitter = async () => {
-        try {
-            const response = await api.get(`/sitters/${params.id}`);
-            setData(response.data)
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
+  const loadSitter = async () => {
+    try {
+      const response = await api.get(`/sitters/${params.id}`);
+      setData(response.data.data)
+    } catch (error) {
+      console.error('Error fetching data:', error);
     }
+  }
 
-    useEffect(() => {
-        loadSitter();
-        console.log("CHamou")
-        console.log(data)
-    }, []);
+  useEffect(() => {
+    loadSitter();
+    console.log("CHamou")
+    console.log(data)
+  }, []);
 
 
-    return (
-        <div className={Styles.container}>
-            <Sitter sitterName={data.nome}/>   
-            <SitterDescription />
-            <SitterReviews />
-        </div>
-    )
+  return (
+    <div className={Styles.container}>
+      <Sitter sitterName={data.nome} sitterRating={Number(data.rating).toPrecision(1)} sitterImage={data.foto} sitterCategory={data.categoria} sitterAddress={data.endereco} />
+      <SitterDescription />
+      <SitterReviews />
+    </div>
+  )
 }
 
 export default InfoSitter;
