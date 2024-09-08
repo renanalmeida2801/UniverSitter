@@ -25,7 +25,7 @@ function Sitter(props) {
         <div className={Styles.info}>
           <div className={Styles.userInfo}>
             <div className={Styles.userNameCategory}>
-              <h1 className={Styles.userName}>{props.sitterName}</h1>
+              <h1 className={Styles.userName}>{props.sitterName} {props.sitterLastName}</h1>
               <div className={Styles.categoryContainer}>
                 {
                   icons[props.sitterCategory]
@@ -34,8 +34,8 @@ function Sitter(props) {
             </div>
             <div className={Styles.star}>
               {
-                Array.from(props.sitterRating).map((star, index) => {
-                  return <FaStar size={30} />
+                Array.from({length:props.sitterRating}).map((star, index) => {
+                  return <FaStar color='gold' size={30} />
                 })
               }
             </div>

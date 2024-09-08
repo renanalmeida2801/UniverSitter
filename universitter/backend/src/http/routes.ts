@@ -13,6 +13,10 @@ import { editSitter } from './controllers/sitters/edit'
 import { listCompleteSitter } from './controllers/sitters/listCompleteSitter'
 import { authMiddleware } from '@/middleware/authenticate'
 
+import { DeleteFeedback } from './controllers/feedbacks/delete'
+import { registerFeedback } from './controllers/feedbacks/register'
+import { getFeedbackById } from './controllers/feedbacks/fetchById'
+
 import { login } from './controllers/auth/login'
 
 // Typescript exemple to use Models.
@@ -40,4 +44,8 @@ export async function appRoutes(app: FastifyInstance) {
   app.put('/sitters', editSitter) // All values are optional, just edit sent what you want
   app.delete('/sitters', deleteSitter)
   app.get('/sittersComplete', listCompleteSitter)
+
+  app.post('/feedback', registerFeedback) // All values are optional, just edit sent what you want
+  app.delete('/feedback', DeleteFeedback)
+  app.get('/feedback/:id', getFeedbackById)
 }

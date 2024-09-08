@@ -1,4 +1,12 @@
-.container{
-    /* position: relative; */
-    /* background-color: aqua; */
+.container_h1{
+    color: var(--verde-marromenu);
+    font-size: 30pt;
+    
+    margin-left: 6vw;
+}
+
+.commentContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }

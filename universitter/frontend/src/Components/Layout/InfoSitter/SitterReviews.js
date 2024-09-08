@@ -2,29 +2,36 @@ import Styles from './SitterReviews.module.css'
 
 import ProfilleImage from '../../../img/fotoPerfilCuidador.png'
 import { FaStar } from 'react-icons/fa'
+import { date } from 'zod'
 
 
-function SitterReviews() {
+function SitterReviews(props) {
+    const newDate = new Date(props.reviewDate);
+    const formatedDate = newDate.toLocaleDateString('pt-BR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+    })
+
     return (
-        <div>
-            <div className={Styles.container}>
-                <h1>Avaliações</h1>
-            </div>
+        <div className={Styles.container}>
+
             <div className={Styles.review}>
-                <img className={ProfilleImage} src={ProfilleImage}></img>
+                {props.sitterImg ? <img className={ProfilleImage} src={props.sitterImg}></img> : <img className={ProfilleImage} src={ProfilleImage}></img>}
                 <div className={Styles.infos}>
-                    <h1>Usuário</h1>
+                    <h1>{props.userName}</h1>
                     <div className={Styles.star}>
-                        <FaStar size={30} />
-                        <FaStar size={30} />
-                        <FaStar size={30} />
-                        <FaStar size={30} />
-                        <FaStar size={30} />
+                        {
+                            Array.from({ length: props.reviewRating }).map((star, index) => {
+                                return <FaStar color='gold' size={30} />
+                            })
+                        }
                     </div>
                 </div>
-                <p>xx/xx/xxxx</p>
+
+                <p>{formatedDate}</p>
+                <h3>{props.sitterComment}</h3>
             </div>
-            <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam accumsan sagittis mauris at varius. Vestibulum tempus purus sit amet laoreet facilisis.</h3>
         </div>
     )
 }
