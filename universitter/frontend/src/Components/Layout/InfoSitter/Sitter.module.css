@@ -1,0 +1,89 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    /* flex-wrap: wrap;  */
+    justify-content: center; /* Centraliza os itens horizontalmente */
+    align-items: center; /* Centraliza os itens verticalmente */
+    gap: 10px; /* Espaçamento entre os elementos */
+}
+
+.profilleImg {
+    border-radius: 50%;
+    width: 10vw; /* Use vw para uma largura responsiva */
+    height: auto;
+    margin-left: 2vw; /* Espaçamento lateral com margem */
+}
+
+.userName {
+    height: auto;
+    width: auto;
+    font-size: 2.5rem; /* Unidades responsivas para texto */
+    color: var(--verde-marromenu);
+    margin-left: 1vw; /* Margem em vez de usar `left` */
+    text-align: center;
+}
+
+.userInfo{
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
+}
+
+.star{
+    margin-left: 1vw;
+}
+
+.pawImg, .leafImg {
+    width: 40px;
+    height: 40px;
+    margin-left: 0.4vw;
+}
+
+
+.btn {
+    font-weight: bold;
+    color: var(--branco-craro);
+    background-color: var(--verde-marromenu);
+    width: 30%; /* Responsivo com porcentagem */
+    height: auto;
+    padding: 15px; /* Use padding para ajustar a altura em vez de porcentagem fixa */
+    margin-top: 2vh; /* Espaçamento superior */
+    margin-left: 40vh;
+    text-align: center;
+}
+
+
+
+.address{
+    width: 100%;
+    display: flex;
+    justify-content: left; /* Centraliza os itens horizontalmente */
+    align-items: center; /* Centraliza os itens verticalmente */
+}
+
+.address h2{
+    font-size: 24pt;
+    margin-left: 1vw;
+    color: var(--verde-marromenu);
+}
+
+
+
+@media (max-width: 768px) {
+    .userName {
+        font-size: 1.8rem; /* Reduz o tamanho do texto em telas menores */
+        margin-left: 0; /* Remove a margem extra */
+    }
+
+    .profilleImg {
+        width: 25vw; /* Aumenta o tamanho da imagem para telas menores */
+        margin-left: 0;
+    }
+
+    .btn {
+        width: 80%; /* Botão ocupa mais espaço em telas menores */
+        left: 10%; /* Centraliza em telas pequenas */
+    }
+}

@@ -85,7 +85,10 @@ export class KnexSittersRepository implements SitterRepository {
   }
 
   async findById(id: number): Promise<Sitter> {
-    const sitter = await postgres('sitter').where('ID', id).first()
+    const sitter = await postgres('sitter')
+      .where('sitter_id', id)
+      .leftJoin('usuario', 'sitter.user_id', 'usuario.user_id')
+      .first()
 
     if (!sitter) throw new Error("Sitter doesn't exist")
 

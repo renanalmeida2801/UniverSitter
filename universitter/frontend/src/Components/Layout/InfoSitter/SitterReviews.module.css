@@ -1,0 +1,41 @@
+.container{
+    color: var(--verde-marromenu);
+    padding: 2vh 6vw;
+    width: 170vh;
+    font-size: 18pt;
+}
+
+.review{
+    display: flex;
+    flex-direction: row;
+}
+
+.review img{
+    width: 10vw;
+    margin-left: 5vw;
+}
+
+.review h1{
+    color: var(--verde-marromenu);
+    font-size: 30pt;
+    margin-top: 2vw;
+    margin-left: 1vw;
+}
+
+.review p{
+    color: var(--verde-marromenu);
+    font-size: 30pt;
+    margin-top: 2vw;
+    margin-left: 50vw;
+}
+
+.star{
+    margin-left: 1vw;
+}
+
+h3{
+    padding-bottom: 1vw;
+    color: var(--verde-marromenu);
+    font-size: 18pt;
+    margin-left: 5vw;
+}

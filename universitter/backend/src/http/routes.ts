@@ -6,6 +6,7 @@ import { editUser } from './controllers/users/edit'
 import { fetchUser } from './controllers/users/fetchByGroupId'
 
 import { registerSitter } from './controllers/sitters/register'
+import { getSitterById } from './controllers/sitters/getById'
 import { listSitter } from './controllers/sitters/list'
 import { deleteSitter } from './controllers/sitters/delete'
 import { editSitter } from './controllers/sitters/edit'
@@ -35,6 +36,7 @@ export async function appRoutes(app: FastifyInstance) {
 
   app.post('/sitters', registerSitter)
   app.get('/sitters', listSitter)
+  app.get('/sitters/:id', getSitterById)
   app.put('/sitters', editSitter) // All values are optional, just edit sent what you want
   app.delete('/sitters', deleteSitter)
   app.get('/sittersComplete', listCompleteSitter)
