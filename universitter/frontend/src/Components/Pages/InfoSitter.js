@@ -33,9 +33,20 @@ function InfoSitter() {
   useEffect(() => {
     loadSitter();
     loadfeedbacks();
+    rattingSitter();
     // console.log(data)
   }, []);
 
+  const rattingSitter = () =>{
+    var ratingSitter = 0;
+    var aux = 0
+    {review.data && review.data.map((item)=>{
+            ratingSitter += item.rating
+            aux++
+        })}
+    console.log('nota:' + ratingSitter)
+    console.log('aux:' + aux)
+  }
 
 
   return (
