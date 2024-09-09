@@ -1,7 +1,7 @@
 .cardContainer {
   position: relative;
   background:
-    linear-gradient(to bottom, var(--creme) 25%, transparent 25%),
+    linear-gradient(to bottom, var(--verde-craro) 25%, transparent 25%),
     white;
   display: grid;
   grid-template-columns: 33% 1fr;

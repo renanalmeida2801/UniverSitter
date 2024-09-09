@@ -39,15 +39,15 @@ function Navbar() {
                 </NavLink>
               </li>
             )}
-            {user.is_sitter &&(
-            <li className={styles.item}>
-              <NavLink
-                to="/my-profille"
-                className={({ isActive }) => isActive ? `${styles.link} ${styles.active}` : styles.link}
-              >
-                Meu Perfil
-              </NavLink>
-            </li>
+            {user.is_sitter && (
+              <li className={styles.item}>
+                <NavLink
+                  to="/my-profille"
+                  className={({ isActive }) => isActive ? `${styles.link} ${styles.active}` : styles.link}
+                >
+                  Meu Perfil
+                </NavLink>
+              </li>
             )}
             <li className={styles.item}>
               <NavLink
@@ -59,7 +59,10 @@ function Navbar() {
             </li>
 
             <li className={styles.item}>
-              <button className={styles.logout} onClick={logout}>Sair</button>
+              <NavLink to='/'>
+                <button className={styles.logout} onClick={logout}>Sair</button>
+
+              </NavLink>
             </li>
           </>
         ) : (
