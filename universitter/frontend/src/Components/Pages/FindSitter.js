@@ -21,8 +21,6 @@ const FindSitter = () => {
     loadData();
   }, []);
 
-  console.log(data)
-
   return (
     <div className={Styles.container}>
       <h1 className={Styles.h1}>Veja alguns dos nossos cuidadores!</h1>
