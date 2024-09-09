@@ -2,9 +2,9 @@ import imageProfile from "../../img/fotoPerfilCuidador.png";
 import { useRef, useState } from "react";
 import styles from './SitterProfilePicture.module.css';
 
-function SitterProfilePicture({ callback }) {
+function SitterProfilePicture({ callback, imgUrl }) {
     const inputRef = useRef(null);
-    const [image, setImage] = useState("");
+    const [image, setImage] = useState(imgUrl);
 
     const handleImageClick = () => {
         inputRef.current.click();

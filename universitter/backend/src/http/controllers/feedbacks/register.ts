@@ -22,10 +22,8 @@ export async function registerFeedback(
   reply: FastifyReply,
 ) {
   const registerBodySchema = z.object({
-    feedback_id: z.number(),
     comment: z.string(),
     rating: z.number().default(0),
-    date: z.date(),
     sitter_id: z.number(),
     user_id: z.number(),
   })
@@ -38,15 +36,13 @@ export async function registerFeedback(
       feedbackRepository
     )
     const { feedback } = await registerUseCase.execute({
-      feedback_id: data.feedback_id,
       comment: data.comment,
       rating: data.rating,
-      date: data.date,
       sitter_id: data.sitter_id,
       user_id: data.user_id
     })
     return reply.status(201).send({
-      message: `Feedback ${data.feedback_id} successfully registered!`,
+      message: `Feedback successfully registered!`,
       data: feedback,
     })
   } catch (err) {

@@ -21,8 +21,7 @@ interface CreateSitterUseCaseResponse {
 
 export class CreateSitterUseCase {
   constructor(
-    private readonly sitterRepository: SitterRepository,
-    private readonly usersRepository: UsersRepository,
+    private readonly sitterRepository: SitterRepository
   ) { }
 
   async execute({
@@ -54,10 +53,6 @@ export class CreateSitterUseCase {
       categoria,
       url
     )
-
-    if (sitter) {
-      await this.usersRepository.changeSitterStatus(user_id, true)
-    }
 
     return {
       sitter,

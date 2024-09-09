@@ -10,6 +10,7 @@ import Navbar from './Components/Layout/Navbar';
 import AuthContext from './Context/auth'; // Import the context
 import InfoSitter from './Components/Pages/InfoSitter';
 import SitterPageProfille from './Components/Pages/SitterPageProfille';
+import SitterEditInfo from './Components/Pages/SitterEditInfo';
 import './App.css';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path='/find-sitter' element={user ? <FindSitter /> : <Login />} />
         <Route path='/info-sitter/:id' element={<InfoSitter/>}/>
         <Route path='/my-profille' element={<SitterPageProfille/>}/>
+        <Route path='/edit-profille' element={<SitterEditInfo/>}/>
         {/* Add other routes as needed */}
       </Routes>
     </Router>
