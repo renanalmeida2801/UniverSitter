@@ -20,6 +20,14 @@ export interface Sitter {
   cpf: string
   foto: string
 }
+export interface Feedback{
+  feedback_id : number
+  comment: string
+  rating: number
+  date: Date
+  sitter_id: number
+  user_id: number
+}
 
 export interface UsuarioSitter extends Usuario, Sitter { }
 export interface UsuarioSitter extends Usuario, Sitter { }

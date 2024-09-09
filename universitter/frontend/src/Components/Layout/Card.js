@@ -5,7 +5,7 @@ import IconChatbubbleOutline from '../Icons/Chat';
 import IconPawSharp from '../Icons/Paw';
 import IconPlant from '../Icons/Plant';
 import StarRating from '../Extras/StarRating';
-
+import { useNavigate } from "react-router-dom";
 
 const icons = [
   <IconPawSharp className={styles.category} width='15px' />,   // Index 0: for 'Pet'
@@ -19,6 +19,12 @@ const icons = [
 ];
 
 const Card = (props) => {
+  const navigate = useNavigate();
+
+  async function redirectToDetailsSitter () {
+    navigate(`/info-sitter/${props.sitter_id}`);
+  }
+  
   const [tab, setTab] = useState(0);
 
   return (
@@ -39,7 +45,7 @@ const Card = (props) => {
         <div className={styles.infoBody}>
           <div className={styles.desc}>{props.descricao}</div>
           <div className={styles.actions}>
-            <button className={styles.button}>Detalhes
+            <button className={styles.button} onClick={redirectToDetailsSitter}>Detalhes
               <div className={styles.icon}>
                 <IconSearch strokeWidth={50} width='25px' />
               </div>

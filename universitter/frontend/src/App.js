@@ -8,6 +8,8 @@ import Login from './Components/Pages/Login';
 import FindSitter from './Components/Pages/FindSitter';
 import Navbar from './Components/Layout/Navbar';
 import AuthContext from './Context/auth'; // Import the context
+import InfoSitter from './Components/Pages/InfoSitter';
+import SitterPageProfille from './Components/Pages/SitterPageProfille';
 import './App.css';
 
 function App() {
@@ -23,6 +25,8 @@ function App() {
         <Route path='/user-register' element={<UserRegister />} />
         <Route path='/sitter-register' element={user ? <SitterRegister /> : <Login />} />
         <Route path='/find-sitter' element={user ? <FindSitter /> : <Login />} />
+        <Route path='/info-sitter/:id' element={<InfoSitter/>}/>
+        <Route path='/my-profille' element={<SitterPageProfille/>}/>
         {/* Add other routes as needed */}
       </Routes>
     </Router>

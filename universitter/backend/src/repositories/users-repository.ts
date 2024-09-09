@@ -12,7 +12,8 @@ export interface UsersRepository {
   findByName(query: string): Promise<Usuario[]>
   findByGroup(id_group: number): Promise<Usuario[]>
   delete(id: number): Promise<Usuario>
-  findByEmail(email: string): Promise<Usuario | null>
+  findByEmail(email: string): Promise<Usuario>
+  findUserIdByEmail(email: String): Promise<Usuario>
   // deleteByGroupId(id_group: number): Promise<Usuario[]>
   changeSitterStatus(id: number, is_sitter: boolean): Promise<Usuario>
   update(
