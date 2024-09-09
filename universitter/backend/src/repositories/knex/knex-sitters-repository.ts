@@ -99,26 +99,25 @@ export class KnexSittersRepository implements SitterRepository {
   }
 
   async update(
-    id: number,
     user_id: number,
     descricao: string,
     disponibilidade: boolean,
-    rating: number,
     endereco: string,
     cpf: string,
+    categoria: number,
+    foto: string,
   ): Promise<Sitter> {
-    const sitter = await postgres('sitter').where('ID', id).first()
+    const sitter = await postgres('sitter').where('user_id', user_id).first()
 
     if (!sitter) throw new Error("Sitter doesn't exist")
 
-    return await postgres('sitter').where('ID', id).update({
-      id,
-      user_id,
+    return await postgres('sitter').where('user_id', user_id).update({
       descricao,
       disponibilidade,
-      rating,
       endereco,
       cpf,
+      foto,
+      categoria,
     })
   }
 }

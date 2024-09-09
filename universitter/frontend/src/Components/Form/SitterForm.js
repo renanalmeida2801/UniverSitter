@@ -55,9 +55,10 @@ function SitterForm() {
       ...data,
       categoria: ['Somente Animais', 'Somente Plantas', 'Animais e Plantas'].indexOf(selected),
       user_id: user.user_id,
-      enderecoCompleto: enderecoCompleto,
+      endereco: enderecoCompleto,
       image: base64Image
     };
+    console.log(dadosComEndereco)
 
     post(dadosComEndereco);
   };

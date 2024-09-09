@@ -39,6 +39,7 @@ function Navbar() {
                 </NavLink>
               </li>
             )}
+            {user.is_sitter &&(
             <li className={styles.item}>
               <NavLink
                 to="/my-profille"
@@ -47,6 +48,7 @@ function Navbar() {
                 Meu Perfil
               </NavLink>
             </li>
+            )}
             <li className={styles.item}>
               <NavLink
                 to="/help"
