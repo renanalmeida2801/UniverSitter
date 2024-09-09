@@ -183,3 +183,47 @@
   text-decoration: underline;
   /* Adiciona o sublinhado ao passar o mouse */
 }
+
+
+
+
+/* Estilo para campos de entrada com erro */
+.inputErrorFieldtext {
+  border: 2px solid red;
+  display: flexbox;
+  width: 41.13%;
+  padding: 1em;
+  margin: 0.5em;
+  margin-left: 5em;
+  border-radius: 20px;
+  background-color: var(--branco-craro);
+  font-size: 1.2em;
+  box-sizing: border-box;
+
+}
+
+
+.inputErrorAnothertext {
+  border: 2px solid red;
+  display: flexbox;
+  width: 88.5%;
+  padding: 1em;
+  margin: 0.5em;
+  margin-left: 5em;
+  border-radius: 20px;
+  background-color: var(--branco-craro);
+  font-size: 1.2em;
+  box-sizing: border-box;
+  color: var(--verde-marromenu);
+}
+
+
+.inputError::placeholder {
+  color: red;
+}
+
+/* Estilo para o texto de erro */
+.errorText {
+  color: red;
+  font-size: 1.2rem;
+}
