@@ -5,18 +5,14 @@ import { error } from 'console'
 
 export class KnexFeedbackRepository implements feedbackRepository {
   async create(
-    feedback_id: number,
     comment: string,
     rating: number,
-    date: Date,
     sitter_id: number,
     user_id: number
   ): Promise<Feedback> {
     return await postgres('feedback').insert({
-      feedback_id,
       comment,
       rating,
-      date,
       sitter_id,
       user_id
     })
