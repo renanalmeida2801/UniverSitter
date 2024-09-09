@@ -2,6 +2,7 @@ import Styles from './MyProfilleSitter.module.css'
 import { FaStar } from 'react-icons/fa'
 import IconPawSharp from '../Icons/Paw.js'
 import IconPlant from '../Icons/Plant.js'
+import { useNavigate } from 'react-router-dom';
 
 const icons = [
   <IconPawSharp className={Styles.category} width='25px' />,   // Index 0: for 'Pet'
@@ -15,6 +16,8 @@ const icons = [
 ];
 
 function MyProfilleSitter(props) {
+
+  const navigate = useNavigate()
 
   console.log(props.sitterRating)
 
@@ -44,7 +47,9 @@ function MyProfilleSitter(props) {
             </div>
           </div>
         </div>
-        <button className={Styles.btn}>Editar informações</button>
+        <button onClick={()=> {
+          navigate('/edit-profille')
+        }} className={Styles.btn}>Editar informações</button>
 
       </div>
       <hr></hr>

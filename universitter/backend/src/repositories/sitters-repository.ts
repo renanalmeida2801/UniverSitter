@@ -18,13 +18,12 @@ export interface SitterRepository {
   getFullSitterInfo(): Promise<UsuarioSitter[]>
   findById(id: number): Promise<Sitter>
   update(
-    id: number,
-    user_id?: number,
+    user_id: number,
     descricao?: string,
     disponibilidade?: boolean,
-    rating?: number,
     endereco?: string,
     cpf?: string,
+    categoria?: number,
     foto?: string
   ): Promise<Sitter>
 }
