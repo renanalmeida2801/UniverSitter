@@ -1,28 +1,28 @@
 import { Usuario } from '@/../@types/postgresKnex'
 import { UsersRepository } from '@/repositories/users-repository'
 
-interface FetchUserByGroupIdUseCaseRequest {
-  id_grupo: number
+interface FetchUserByEmailUseCaseRequest {
+  email: string
 }
 
-interface FetchUserByGroupIdUseCaseResponse {
-  users: Usuario[]
+interface FetchUserByEmailUseCaseResponse {
+  user: Usuario
 }
 
-export class FetchUsersByGroupIdUseCase {
+export class FetchUsersByEmailUseCase {
   constructor(private readonly usersRepository: UsersRepository) {}
 
   async execute({
-    id_grupo,
-  }: FetchUserByGroupIdUseCaseRequest): Promise<FetchUserByGroupIdUseCaseResponse> {
-    const users = await this.usersRepository.findByGroup(id_grupo)
+    email,
+  }: FetchUserByEmailUseCaseRequest): Promise<FetchUserByEmailUseCaseResponse> {
+    const user = await this.usersRepository.findUserIdByEmail(email)
 
-    if (!users) {
-      throw new Error('Group not found')
+    if (!user) {
+      throw new Error('User not found')
     }
 
     return {
-      users,
+      user,
     }
   }
 }

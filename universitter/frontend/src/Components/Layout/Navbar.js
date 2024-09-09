@@ -41,12 +41,21 @@ function Navbar() {
             )}
             <li className={styles.item}>
               <NavLink
+                to="/my-profille"
+                className={({ isActive }) => isActive ? `${styles.link} ${styles.active}` : styles.link}
+              >
+                Meu Perfil
+              </NavLink>
+            </li>
+            <li className={styles.item}>
+              <NavLink
                 to="/help"
                 className={({ isActive }) => isActive ? `${styles.link} ${styles.active}` : styles.link}
               >
                 Ajuda
               </NavLink>
             </li>
+
             <li className={styles.item}>
               <button className={styles.logout} onClick={logout}>Sair</button>
             </li>

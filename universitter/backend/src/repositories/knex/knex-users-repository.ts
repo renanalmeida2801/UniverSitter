@@ -5,7 +5,19 @@ import { Usuario } from 'postgresKnex'
 export class KnexUsersRepository implements UsersRepository {
 
   async findByEmail(email: string): Promise<Usuario> {
-    return await postgres('usuario').where('email', email).first()
+    const user = await postgres('usuario').where('email', email).first()
+
+    if(!user) throw new Error("Usuario não encontrado")
+
+    return user
+  }
+
+  async findUserIdByEmail(email: String): Promise<Usuario> {
+    const user = await postgres('usuario').select('user_id').where('email', email).first()
+
+    if(!user) throw new Error("Usuario não encontrado")
+
+    return user
   }
 
   async create(

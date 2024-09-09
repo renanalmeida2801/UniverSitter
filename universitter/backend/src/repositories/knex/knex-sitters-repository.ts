@@ -37,7 +37,7 @@ export class KnexSittersRepository implements SitterRepository {
   }
 
   async findByUserId(id: number): Promise<Sitter> {
-    return await postgres('sitter').where('user_id', id).first()
+    return await postgres('sitter').leftJoin('usuario', 'usuario.user_id', 'sitter.user_id').where('sitter.user_id', id).first()
   }
 
   // TODO: Fix this after make groups.

@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { FastifyRequest, FastifyReply } from 'fastify'
 import { KnexUsersRepository } from '@/repositories/knex/knex-users-repository'
-import { FetchUsersByGroupIdUseCase } from '@/services/fetch-users-group'
+import { FetchUsersByEmailUseCase } from '@/services/fetch-users-group'
 
 /**
  * Fetch Users by group id
@@ -12,20 +12,22 @@ import { FetchUsersByGroupIdUseCase } from '@/services/fetch-users-group'
  */
 
 export async function fetchUser(request: FastifyRequest, reply: FastifyReply) {
-  const deleteBodySchema = z.object({
-    id_grupo: z.number(),
+  const fetchUserBodySchema = z.object({
+    email: z.string().email(),
   })
-  const data = deleteBodySchema.parse(request.body)
+
+  const data = fetchUserBodySchema.parse(request.params)
+  console.log(data)
 
   try {
     const usersRepository = new KnexUsersRepository()
-    const deleteUseCase = new FetchUsersByGroupIdUseCase(usersRepository)
-    const { users } = await deleteUseCase.execute({
-      id_grupo: data.id_grupo,
+    const fetchUserByEmailUseCase = new FetchUsersByEmailUseCase(usersRepository)
+    const { user } = await fetchUserByEmailUseCase.execute({
+      email: data.email,
     })
     return reply.status(201).send({
       message: `Users successfully fetched!`,
-      data: users,
+      data: user,
     })
   } catch (err) {
     if (err instanceof Error) {
