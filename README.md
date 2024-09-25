@@ -22,6 +22,7 @@ O UniveSitter é um website que se propõe a conectar universitários donos (pai
 * Luis Felippe Morais de Lima
 * Marcelo Mikael Pinheiro Lessa Peres
 * Renan Victor de Almeida Silva
+* Márcio Alexandre Martins de Almeida Junior
 
 <h4 align="center"> 
     :construction:  Projeto em construção  :construction:
