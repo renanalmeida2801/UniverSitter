@@ -1,0 +1,30 @@
+.container_h1{
+    color: var(--verde-marromenu);
+    font-size: 30pt;
+    
+    margin-left: 6vw;
+}
+
+.commentContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.avaliar {
+    align-items: center;
+    color: var(--branco-craro);
+    background-color: var(--verde-marromenu);
+    margin-top: 0px; /* Espaçamento acima do botão, ajuste conforme necessário */
+    margin-left: 2%;
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    width: 50px; /* Faz o botão ocupar a largura disponível */
+    height: 50px;
+    border-radius: 50%;
+}
+
+.feedback{
+    display: flex;
+    flex-direction: row;
+}

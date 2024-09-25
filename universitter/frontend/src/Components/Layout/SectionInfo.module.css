@@ -1,0 +1,82 @@
+.container {
+    background-color: white;
+    margin: none;
+    padding: none;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding-bottom: 5%;
+    position: relative;
+}
+
+.h1 {
+    flex-wrap: wrap;
+    padding-top: 50px;
+    text-align: center;
+    font-size: 55px;
+    font-family: 'KoHo', sans-serif;
+    padding-bottom: 10px;
+}
+
+.img_text {
+    display: flex;
+    /* Usa flexbox para organizar os itens */
+    flex-direction: row;
+    /* Coloca o texto ao lado da imagem */
+    align-items: center;
+    /* Alinha verticalmente ao centro */
+    gap: 20px;
+    padding-right: 20px;
+}
+
+
+.midinfo {
+    flex-wrap: wrap;
+    padding-left: 28px;
+    padding-right: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.midinfo div {
+    flex-wrap: nowrap;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-self: start;
+    max-width: 30%;
+}
+
+.img {
+    flex-wrap: wrap;
+    width: 170px;
+    height: auto;
+}
+
+.subtext {
+    flex-wrap: wrap;
+    font-family: 'KoHo', sans-serif;
+    font-size: clamp(16px, 2vw, 45px);
+    text-align: center;
+
+}
+
+.lastinfo {
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1% 2%;
+}
+
+.p {
+    font-family: 'KoHo', sans-serif;
+    font-size: 35px;
+    max-width: 30%;
+    word-wrap: break-word;
+    /* text-align: center; */
+    text-align: center;
+
+}

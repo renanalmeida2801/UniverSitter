@@ -1,0 +1,141 @@
+.form {
+    position: relative;
+    width: 1300px;
+    height: 650px;
+    top: 350px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    gap: 50px;
+    border-radius: 10px;
+}
+
+.inputTextGroup {
+    width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputButtonGroup {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.h1 {
+    color: black;
+    ;
+    padding: 0;
+    margin: 0;
+    font-size: 4rem;
+}
+
+.formHeader {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    top: 40px;
+}
+
+.img {
+    width: 64px;
+    height: 64px;
+}
+
+input {
+    padding: 20px;
+    border: 1px solid var(--verde-marromenu);
+    width: 80%;
+    border-radius: 20px;
+    font-size: 1.5rem;
+    transition: border 0.3s, box-shadow 0.3s;
+    /* Adiciona transição suave */
+}
+
+input::placeholder {
+    color: var(--verde-marromenu);
+}
+
+input+input {
+    margin-top: 20px;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    /* Adiciona uma leve sombra ao focar */
+}
+
+button {
+    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 20px;
+    border-radius: 20px;
+    width: 60%;
+    font-family: 'KoHo', sans-serif;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    /* Adiciona transição suave */
+}
+
+button:hover {
+    box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+    transform: translateY(-2px);
+    /* Adiciona efeito de elevação ao hover */
+}
+
+.googleImg {
+    width: 16px;
+    height: 16px;
+}
+
+.default {
+    background-color: var(--verde-marromenu);
+    border: 1px solid gray;
+    color: white;
+}
+
+.googleButton {
+    position: absolute;
+    background-color: transparent;
+    border: 1px solid var(--verde-marromenu);
+    color: var(--verde-marromenu);
+    display: flex;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    bottom: 60px;
+}
+
+/* Placeholder color for the default state */
+:-ms-input-placeholder {
+    color: var(--verde-marromenu);
+}
+
+
+/* Estilo para campos de entrada com erro */
+.inputError {
+    border: 1px solid red;
+}
+
+.inputError::placeholder {
+    color: red;
+}
+
+/* Estilo para o texto de erro */
+.errorText {
+    color: red;
+    font-size: 1.2rem;
+}

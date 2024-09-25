@@ -1,0 +1,6 @@
+.container{
+    color: var(--verde-marromenu);
+    padding: 2vh 6vw;
+    width: 170vh;
+    font-size: 18pt;
+}

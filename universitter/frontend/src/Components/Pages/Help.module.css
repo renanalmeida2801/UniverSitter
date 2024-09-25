@@ -1,0 +1,85 @@
+.container {
+    background-color: var(--branco-craro);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 85%;
+    max-width: 1200px;
+    height: 80%;
+    padding: 20px;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 57%;
+    /* Ajuste o valor conforme necessário */
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.sectionsContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: 100%;
+}
+
+.section {
+    background-color: transparent;
+    padding: 5px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.section h2 {
+    margin: 5px 0;
+    /* Ajuste a margem superior e inferior */
+    background-color: transparent;
+    color: var(--verde-marromenu);
+}
+
+.section p {
+    background-color: var(--creme-2);
+    margin: 0;
+    font-family: 'KoHo', sans-serif;
+    padding: 10px;
+    font-weight: 600;
+    border-radius: 4px;
+    color: var(--verde-marromenu);
+    font-size: 0.80rem;
+}
+
+.containerHeader {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* Alinha verticalmente os itens */
+    justify-content: center;
+    /* Centraliza horizontalmente */
+    margin-bottom: 10px;
+    /* Espaçamento abaixo do cabeçalho */
+}
+
+.containerFooter {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.headerTitle {
+    font-size: 2.5rem;
+    /* Ajuste o tamanho da fonte conforme necessário */
+    color: var(--cinza);
+    margin: 0;
+    /* Remove margens padrão ao redor do título */
+}
+
+.img {
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
+    /* Ajusta o espaço horizontal entre as imagens e o título */
+}
